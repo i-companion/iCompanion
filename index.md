@@ -2,11 +2,11 @@
 
 ## Table of contents
 
+## Team Members
+
 ## Overview
 
 ## User Guide
-
-## Team Members
 
 ### Landing Page
 
