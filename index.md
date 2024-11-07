@@ -6,6 +6,8 @@
 
 ## User Guide
 
+## Team Members
+
 ### Landing Page
 
 ### Sign in and sign up
