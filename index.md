@@ -20,7 +20,9 @@
 
 ## Overview
 
-Summarizes what the system does and what makes it special and different from other related applications.
+Problem: Many students that come to the ilab, especially during the first couple weeks of school, are trying to make friends but end up playing games alone. 
+
+Solution: We make an application that sorts students using similar available times, games played, etc and match them with each other making the process of forming connections and making friends easier.
 
 ## User Guide
 
