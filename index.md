@@ -24,6 +24,11 @@ Problem: Many students that come to the ilab, especially during the first couple
 
 Solution: We make an application that sorts students using similar available times, games played, etc and match them with each other making the process of forming connections and making friends easier.
 
+## Landing Page
+
+<img src="images/i-Companion-Landing-Page.png" alt="landing page mockup" width="300">
+
+
 ## User Guide
 
 Provide at least one screen shot of every page. This section should provide enough detail for a user to get up and running with your system (you can provide further help within the application itself).
