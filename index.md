@@ -19,8 +19,8 @@
 -->
 ## Content
 - [Overview](#Overview)
-- [Landing Page](#LandingPage)
-- [User Guide](#UserGuide)
+- [Landing Page](#Landing Page)
+- [User Guide](#User Guide)
 - [Overview](#Overview)
 - [Overview](#Overview)
 
