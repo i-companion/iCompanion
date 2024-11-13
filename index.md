@@ -23,6 +23,8 @@
 - [User Guide](#User-Guide)
 - [Developer Guide](#Developer-Guide)
 - [Development History](#Development-History)
+- [Team Members](#Team-Members)
+- [Team Contract](#Team-Contract)
 
 ## Overview
 
