@@ -19,10 +19,10 @@
 -->
 ## Content
 - [Overview](#Overview)
-- [Landing Page](#Landing Page)
-- [User Guide](#User Guide)
-- [Overview](#Overview)
-- [Overview](#Overview)
+- [Landing Page](#Landing-Page)
+- [User Guide](#User-Guide)
+- [Developer Guide](#Developer-Guide)
+- [Development History](#Development-History)
 
 ## Overview
 
