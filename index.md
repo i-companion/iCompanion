@@ -17,10 +17,25 @@
 ### Home page
 
 -->
+## Content
+- [Overview](#Overview)
+- [Landing Page](#Landing-Page)
+- [User Guide](#User-Guide)
+- [Developer Guide](#Developer-Guide)
+- [Development History](#Development-History)
+- [Team Members](#Team-Members)
+- [Team Contract](#Team-Contract)
 
 ## Overview
 
-Summarizes what the system does and what makes it special and different from other related applications.
+Problem: Many students that come to the ilab, especially during the first couple weeks of school, are trying to make friends but end up playing games alone. 
+
+Solution: We make an application that sorts students using similar available times, games played, etc and match them with each other making the process of forming connections and making friends easier.
+
+## Landing Page
+
+<img src="images/i-Companion-Landing-Page.png" alt="landing page mockup" width="300">
+
 
 ## User Guide
 
@@ -41,6 +56,3 @@ Explains who the developers of the system are and how to get in touch with them 
 ## Team Contract
 
 [Link to Team Contract](https://docs.google.com/document/d/1fk9-8-RfUI3wKC04T7Q8dusIydw-vxO_euXqXWyy_ng/edit?usp=sharing) (will open in Google Docs).
-
-
-

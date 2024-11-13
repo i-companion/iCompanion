@@ -1,0 +1,46 @@
+:root {
+  --nat-navbar-bg: #94b87f;
+  --nat-navbar-bg-rgb: 148, 184, 127;
+  --nat-navbar-text-color: white;
+}
+
+html,
+body {
+  --bs-dark: var(--nat-navbar-bg);
+  --bs-dark-rgb: var(--nat-navbar-bg-rgb);
+  background: fixed center url("light-green-background.jpg");
+  background-size: cover;
+  box-sizing: border-box;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+body .navbar {
+  --bs-navbar-active-color: var(--nat-navbar-highlight-text);
+  --bs-navbar-brand-color: var(--nat-navbar-text-color);
+  --bs-navbar-brand-hover-color: var(--nat-navbar-highlight-text);
+  --bs-navbar-color: var(--nat-navbar-text-color);
+  --bs-navbar-hover-color: var(--nat-navbar-highlight-text);
+}
+
+footer, footer a {
+  color: var(--nat-navbar-text-color);
+}
+
+.bg-dark a.dropdown-item {
+  color: var(--nat-navbar-bg);
+}
+
+/* makes bootstrap icons larger and adds padding to the top of them */
+.icon {
+  font-size: 100px;
+  padding-top: 10px;
+}
+
+.wrapper {
+  box-sizing: border-box;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
