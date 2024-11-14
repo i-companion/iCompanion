@@ -17,6 +17,8 @@
 ### Home page
 
 -->
+<link rel="stylesheet" href="/design/style.css">
+
 ## Content
 - [Overview](#overview)
 - [Landing Page](#landing-page)
