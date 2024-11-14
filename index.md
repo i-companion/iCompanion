@@ -18,13 +18,13 @@
 
 -->
 ## Content
-- [Overview](#Overview)
-- [Landing Page](#Landing-Page)
-- [User Guide](#User-Guide)
-- [Developer Guide](#Developer-Guide)
-- [Development History](#Development-History)
-- [Team Members](#Team-Members)
-- [Team Contract](#Team-Contract)
+- [Overview](#overview)
+- [Landing Page](#landing-page)
+- [User Guide](#user-guide)
+- [Developer Guide](#developer-guide)
+- [Development History](#development-history)
+- [Team Members](#team-members)
+- [Team Contract](#team-contract)
 
 ## Overview
 
