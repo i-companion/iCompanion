@@ -17,7 +17,7 @@
 ### Home page
 
 -->
-<link rel="stylesheet" href="/design/style.css">
+<link rel="stylesheet" href="/Design/style.css">
 
 ## Content
 - [Overview](#overview)
