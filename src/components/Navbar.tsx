@@ -14,19 +14,19 @@ const NavBar: React.FC = () => {
   const role = userWithRole?.randomKey;
   const pathName = usePathname();
   return (
-    <Navbar bg="dark" expand="lg">
+    <Navbar bg="light" expand="lg">
       <Container>
-        <Navbar.Brand href="/">digits</Navbar.Brand>
+        <Navbar.Brand href="/">Next.js Application Template</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto justify-content-start">
             {currentUser
               ? [
                   <Nav.Link id="add-stuff-nav" href="/add" key="add" active={pathName === '/add'}>
-                    Add Contact
+                    Add Stuff
                   </Nav.Link>,
                   <Nav.Link id="list-stuff-nav" href="/list" key="list" active={pathName === '/list'}>
-                    List Contacts
+                    List Stuff
                   </Nav.Link>,
                 ]
               : ''}

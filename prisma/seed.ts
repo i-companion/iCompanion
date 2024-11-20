@@ -1,4 +1,4 @@
-import { PrismaClient, Role } from '@prisma/client';
+import { PrismaClient, Role, Condition } from '@prisma/client';
 import { hash } from 'bcrypt';
 import * as config from '../config/settings.development.json';
 
@@ -24,18 +24,24 @@ async function main() {
     });
     // console.log(`  Created user: ${user.email} with role: ${user.role}`);
   });
-  config.defaultContacts.forEach(async (contact, index) => {
-    console.log(`Adding contact: ${contact.firstName} ${contact.lastName}`);
-    await prisma.contact.upsert({
-      where: { id: index },
+  config.defaultData.forEach(async (data, index) => {
+    let condition: Condition = 'good';
+    if (data.condition === 'poor') {
+      condition = 'poor';
+    } else if (data.condition === 'excellent') {
+      condition = 'excellent';
+    } else {
+      condition = 'fair';
+    }
+    console.log(`  Adding stuff: ${data.name} (${data.owner})`);
+    await prisma.stuff.upsert({
+      where: { id: index + 1 },
       update: {},
       create: {
-        firstName: contact.firstName,
-        lastName: contact.lastName,
-        address: contact.address,
-        image: contact.image,
-        description: contact.description,
-        owner: contact.owner,
+        name: data.name,
+        quantity: data.quantity,
+        owner: data.owner,
+        condition,
       },
     });
   });

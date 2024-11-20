@@ -10,7 +10,11 @@ generator client {
 
 datasource db {
   provider = "postgresql"
+  // for local development
   url      = env("DATABASE_URL")
+  // for Vercel
+  // url       = env("POSTGRES_PRISMA_URL")
+  // directUrl = env("POSTGRES_URL_NON_POOLING")
 }
 
 enum Role {
@@ -32,22 +36,10 @@ enum Condition {
   poor
 }
 
-model Note {
-  id        Int      @id @default(autoincrement())
-  contactId Int
-  note      String
+model Stuff {
+  id        Int       @id @default(autoincrement())
+  name      String
+  quantity  Int
+  condition Condition
   owner     String
-  createdAt DateTime @default(now())
-  Contact   Contact  @relation(fields: [contactId], references: [id])
-}
-
-model Contact {
-  id            Int     @id @default(autoincrement())
-  firstName     String
-  lastName      String
-  address       String
-  image         String
-  description   String
-  notes         Note[]
-  owner         String
 }
