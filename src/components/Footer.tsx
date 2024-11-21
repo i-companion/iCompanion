@@ -5,11 +5,11 @@ const Footer = () => (
   <footer className="mt-auto py-3 bg-dark">
     <Container>
       <Col className="text-center">
-        ilab located across from Kuykendall
+        iLab located across from Kuykendall
         <br />
         University of Hawaii
         <br />
-        Honolulu, HI 96822
+        2532 Correa Rd building 37, Honolulu, HI 96822
         <br />
       </Col>
     </Container>
