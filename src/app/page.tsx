@@ -6,12 +6,11 @@ const Home = () => (
     <Container id="landing-page" fluid className="py-3">
       <Row className="align-middle text-center">
         <Col xs={4}>
-          <Image src="next.svg" width="150px" alt="" />
+        <h1>Find other players to connect with!</h1>
         </Col>
-
         <Col xs={8} className="d-flex flex-column justify-content-center">
           <h1>Welcome to iCompanion!</h1>
-          <p>Make friends and play games!</p>
+          <p></p>
         </Col>
       </Row>
     </Container>

@@ -1,6 +1,14 @@
+:root {
+  --nat-navbar-bg: darkgreen;
+  --nat-navbar-bg-rgb: 0, 100, 0;
+  --nat-navbar-text-color: white;
+}
+
 html,
 body {
+  --bs-dark: var(--nat-navbar-bg);
   --bs-light-rgb: 236, 236, 236;
+  --bs-dark-rgb:var(--nat-navbar-bg-rgb);
   box-sizing: border-box;
   height: 100%;
   padding: 0;
@@ -15,4 +23,8 @@ body {
   min-height: 100%;
   display: flex;
   flex-direction: column;
+}
+
+footer, footer a {
+  color: var(--nat-navbar-text-color);
 }
