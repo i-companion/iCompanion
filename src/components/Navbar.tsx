@@ -31,7 +31,7 @@ const NavBar: React.FC = () => {
           <Nav>
             {session ? (
               <>
-                <Nav.Link href="/profile" active={pathName === '/profile'}>
+                <Nav.Link href="/profile" key="profile" active={pathName === '/profile'}>
                   Profile
                 </Nav.Link>
                 <NavDropdown title={currentUser}>
