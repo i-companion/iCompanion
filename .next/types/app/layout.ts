@@ -1,4 +1,4 @@
-// File: C:\Users\micah\Desktop\ICS314\iCompanion\src\app\layout.tsx
+// File: /Users/julian/Documents/GitHub/iCompanion/src/app/layout.tsx
 import * as entry from '../../../src/app/layout.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 
