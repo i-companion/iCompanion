@@ -16,11 +16,14 @@ const Connections = async () => {
       <Container>
         <Row>
           <Col>
-            <h1>Connections page is currently being cooked.</h1>
+            <img
+              src="/i-companion-connections.png"
+              alt="Connections illustration"
+              style={{ maxWidth: '100%', height: 'auto', display: 'block', margin: '0 auto' }}
+            />
           </Col>
         </Row>
       </Container>
-
     </main>
   );
 };
