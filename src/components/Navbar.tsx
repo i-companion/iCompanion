@@ -20,7 +20,7 @@ const NavBar: React.FC = () => {
             <Nav.Link href="/schedule" active={pathName === '/schedule'}>
               Schedule
             </Nav.Link>
-            <Nav.Link href="/connections" active={pathName === '/connections'}>
+            <Nav.Link href="/connections" key="connections" active={pathName === '/connections'}>
               Connections
             </Nav.Link>
             <NavDropdown id="games-dropdown" title="Games">
