@@ -17,11 +17,11 @@ const NavBar: React.FC = () => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto justify-content-start">
-            <Nav.Link href="/schedule" active={pathName === '/schedule'}>
-              Schedule
-            </Nav.Link>
             <Nav.Link href="/connections" active={pathName === '/connections'}>
               Connections
+            </Nav.Link>
+            <Nav.Link href="/schedule" active={pathName === '/schedule'}>
+              Schedule
             </Nav.Link>
             <NavDropdown id="games-dropdown" title="Games">
               <NavDropdown.Item href="/popular-games">Popular Games</NavDropdown.Item>
