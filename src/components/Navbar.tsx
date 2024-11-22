@@ -25,7 +25,7 @@ const NavBar: React.FC = () => {
             </Nav.Link>
             <NavDropdown id="games-dropdown" title="Games">
               <NavDropdown.Item href="/popular-games">Popular Games</NavDropdown.Item>
-              <NavDropdown.Item href="/available-games">Available Games at the iLab</NavDropdown.Item>
+              <NavDropdown.Item href="/available" key="available" active={pathName === '/available'}>Available Games at the iLab</NavDropdown.Item>
             </NavDropdown>
           </Nav>
           <Nav>
