@@ -14,7 +14,7 @@ const NavBar: React.FC = () => {
     <Navbar bg="dark" expand="lg">
       <Container>
         <Navbar.Brand href="/">
-          <Image src="uhm-logo.png" style={{ width: '50px' }}></Image>
+          <Image src="uhm-logo.png" style={{ width: '50px' }} alt="University of Hawaii at Manoa logo"></Image>
         </Navbar.Brand>
         <Navbar.Brand href="/">iCompanion</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
