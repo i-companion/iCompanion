@@ -24,7 +24,7 @@ const NavBar: React.FC = () => {
               Connections
             </Nav.Link>
             <NavDropdown id="games-dropdown" title="Games">
-              <NavDropdown.Item href="/popular-games">Popular Games</NavDropdown.Item>
+              <NavDropdown.Item href="/popular" key="popular" active={pathName === '/popular'}>Popular Games</NavDropdown.Item>
               <NavDropdown.Item href="/available-games">Available Games at the iLab</NavDropdown.Item>
             </NavDropdown>
           </Nav>
