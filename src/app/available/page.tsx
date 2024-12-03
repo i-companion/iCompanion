@@ -4,7 +4,7 @@ import { loggedInProtectedPage } from '@/lib/page-protection';
 import { Container, Row, Col, Card } from 'react-bootstrap';
 import AvailableCard from '@/components/AvailableCard';
 
-const AvailableGames = async () => {
+const Available = async () => {
   // Protect the page, only logged in users can access it.
   const session = await getServerSession(authOptions);
   loggedInProtectedPage(
@@ -12,6 +12,7 @@ const AvailableGames = async () => {
       user: { email: string; id: string; randomKey: string };
     } | null,
   );
+  
   return (
     <main>
       <Container id="list" fluid className="py-3">
@@ -27,4 +28,4 @@ const AvailableGames = async () => {
   );
 };
 
-export default AvailableGames;
+export default Available;
