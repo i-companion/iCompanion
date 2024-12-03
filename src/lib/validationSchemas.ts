@@ -1,30 +1,10 @@
-import * as Yup from 'yup';
+// lib/validationSchemas.ts
 
-export const AddStuffSchema = Yup.object({
-  name: Yup.string().required(),
-  quantity: Yup.number().positive().required(),
-  condition: Yup.string().oneOf(['excellent', 'good', 'fair', 'poor']).required(),
-  owner: Yup.string().required(),
-});
-
-export const EditStuffSchema = Yup.object({
-  id: Yup.number().required(),
-  name: Yup.string().required(),
-  quantity: Yup.number().positive().required(),
-  condition: Yup.string().oneOf(['excellent', 'good', 'fair', 'poor']).required(),
-  owner: Yup.string().required(),
-});
-/**
-export const EditProfileSchema = Yup.object({
-  firstName: Yup.string().required(), 
-  lastName: Yup.string().required(),
-  discord: Yup.string().required(),
-  email: Yup.string().required(),
-  image: Yup.string().required(),
-  interests: Yup.string().oneOf(['valorant', 'league-of-legends', 'call-of-duty']).required(),
-  description: Yup.string().required(),
-});
-*/
+export interface Interests {
+  valorant: boolean;
+  leagueOfLegends: boolean;
+  callOfDuty: boolean;
+}
 
 export interface Profile {
   firstName: string;
@@ -32,6 +12,6 @@ export interface Profile {
   discord: string;
   email: string;
   image: string;
-  interests: string[];
+  interests: Interests[]; // Updated to match the new structure
   description: string;
 }

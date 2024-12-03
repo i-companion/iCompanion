@@ -52,7 +52,7 @@ model Profile {
 }
 
 model Interests {
-  valorant          String
-  leagueOfLegends   String
-  callOfDuty        String
+  valorant          Boolean
+  leagueOfLegends   Boolean
+  callOfDuty        Boolean
 }
