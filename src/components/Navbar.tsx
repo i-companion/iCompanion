@@ -2,7 +2,7 @@
 
 import { useSession } from 'next-auth/react';
 import { usePathname } from 'next/navigation';
-import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
+import { Container, Nav, Navbar, NavDropdown, Image } from 'react-bootstrap';
 import { BoxArrowRight, PersonFill, PersonPlusFill } from 'react-bootstrap-icons';
 
 const NavBar: React.FC = () => {
@@ -13,6 +13,7 @@ const NavBar: React.FC = () => {
   return (
     <Navbar bg="dark" expand="lg">
       <Container>
+        <Navbar.Brand><Image src ="/uhm-logo.png" width="50px" /></Navbar.Brand>
         <Navbar.Brand href="/">iCompanion</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
@@ -24,8 +25,8 @@ const NavBar: React.FC = () => {
               Connections
             </Nav.Link>
             <NavDropdown id="games-dropdown" title="Games">
-              <NavDropdown.Item href="/popular-games">Popular Games</NavDropdown.Item>
-              <NavDropdown.Item href="/available-games">Available Games at the iLab</NavDropdown.Item>
+              <NavDropdown.Item href="/popular" key="popular" active={pathName === '/popular'}>Popular Games</NavDropdown.Item>
+              <NavDropdown.Item href="/available" key="available" active={pathName === '/available'}>Available Games at the iLab</NavDropdown.Item>
             </NavDropdown>
           </Nav>
           <Nav>

@@ -11,7 +11,14 @@ type SignUpForm = {
   email: string;
   password: string;
   confirmPassword: string;
-  // acceptTerms: boolean;
+  firstName: string;
+  lastName: string;
+  discord: string;
+  interests: {
+    valorant?: boolean;
+    leagueOfLegends?: boolean;
+    callOfDuty?: boolean;
+  };
 };
 
 /** The sign up page. */
@@ -25,6 +32,14 @@ const SignUp = () => {
     confirmPassword: Yup.string()
       .required('Confirm Password is required')
       .oneOf([Yup.ref('password'), ''], 'Confirm Password does not match'),
+    firstName: Yup.string().required('First name is required'),
+    lastName: Yup.string().required('Last name is required'),
+    discord: Yup.string().required('Discord handle is required'),
+    interests: Yup.object().shape({
+      valorant: Yup.boolean(),
+      leagueOfLegends: Yup.boolean(),
+      callOfDuty: Yup.boolean(),
+    }),
   });
 
   const {
@@ -37,10 +52,8 @@ const SignUp = () => {
   });
 
   const onSubmit = async (data: SignUpForm) => {
-    // console.log(JSON.stringify(data, null, 2));
     await createUser(data);
-    // After creating, signIn with redirect to the add page
-    await signIn('credentials', { callbackUrl: '/add', ...data });
+    await signIn('credentials', { callbackUrl: '/profile', ...data });
   };
 
   return (
@@ -52,6 +65,7 @@ const SignUp = () => {
             <Card>
               <Card.Body>
                 <Form onSubmit={handleSubmit(onSubmit)}>
+                  {/* Email */}
                   <Form.Group className="form-group">
                     <Form.Label>Email</Form.Label>
                     <input
@@ -62,6 +76,7 @@ const SignUp = () => {
                     <div className="invalid-feedback">{errors.email?.message}</div>
                   </Form.Group>
 
+                  {/* Password */}
                   <Form.Group className="form-group">
                     <Form.Label>Password</Form.Label>
                     <input
@@ -71,6 +86,8 @@ const SignUp = () => {
                     />
                     <div className="invalid-feedback">{errors.password?.message}</div>
                   </Form.Group>
+
+                  {/* Confirm Password */}
                   <Form.Group className="form-group">
                     <Form.Label>Confirm Password</Form.Label>
                     <input
@@ -80,6 +97,70 @@ const SignUp = () => {
                     />
                     <div className="invalid-feedback">{errors.confirmPassword?.message}</div>
                   </Form.Group>
+
+                  {/* First Name */}
+                  <Form.Group className="form-group">
+                    <Form.Label>First Name</Form.Label>
+                    <input
+                      type="text"
+                      {...register('firstName')}
+                      className={`form-control ${errors.firstName ? 'is-invalid' : ''}`}
+                    />
+                    <div className="invalid-feedback">{errors.firstName?.message}</div>
+                  </Form.Group>
+
+                  {/* Last Name */}
+                  <Form.Group className="form-group">
+                    <Form.Label>Last Name</Form.Label>
+                    <input
+                      type="text"
+                      {...register('lastName')}
+                      className={`form-control ${errors.lastName ? 'is-invalid' : ''}`}
+                    />
+                    <div className="invalid-feedback">{errors.lastName?.message}</div>
+                  </Form.Group>
+
+                  {/* Discord */}
+                  <Form.Group className="form-group">
+                    <Form.Label>Discord</Form.Label>
+                    <input
+                      type="text"
+                      {...register('discord')}
+                      className={`form-control ${errors.discord ? 'is-invalid' : ''}`}
+                    />
+                    <div className="invalid-feedback">{errors.discord?.message}</div>
+                  </Form.Group>
+
+                  {/* Interests */}
+                  <Form.Group className="form-group">
+                    <Form.Label>Interests</Form.Label>
+                    <div className="form-check">
+                      <input
+                        type="checkbox"
+                        {...register('interests.valorant')}
+                        className="form-check-input"
+                      />
+                      <label className="form-check-label">Valorant</label>
+                    </div>
+                    <div className="form-check">
+                      <input
+                        type="checkbox"
+                        {...register('interests.leagueOfLegends')}
+                        className="form-check-input"
+                      />
+                      <label className="form-check-label">League of Legends</label>
+                    </div>
+                    <div className="form-check">
+                      <input
+                        type="checkbox"
+                        {...register('interests.callOfDuty')}
+                        className="form-check-input"
+                      />
+                      <label className="form-check-label">Call of Duty</label>
+                    </div>
+                  </Form.Group>
+
+                  {/* Buttons */}
                   <Form.Group className="form-group py-3">
                     <Row>
                       <Col>
