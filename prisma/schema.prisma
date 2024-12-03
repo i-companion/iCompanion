@@ -39,3 +39,20 @@ model Stuff {
   condition Condition
   owner     String
 }
+
+model Profile {
+  firstName   String
+  lastName    String 
+  discord     String
+  email       String
+  image       String
+  interests   Interests[]
+  description String
+  owner       String
+}
+
+model Interests {
+  valorant          String
+  league-of-legends String
+  call-of-duty      String
+}
