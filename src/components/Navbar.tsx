@@ -17,15 +17,15 @@ const NavBar: React.FC = () => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto justify-content-start">
-            <Nav.Link href="/connections" active={pathName === '/connections'}>
-              Connections
-            </Nav.Link>
             <Nav.Link href="/schedule" active={pathName === '/schedule'}>
               Schedule
             </Nav.Link>
+            <Nav.Link href="/connections" active={pathName === '/connections'}>
+              Connections
+            </Nav.Link>
             <NavDropdown id="games-dropdown" title="Games">
-              <NavDropdown.Item href="/popular-games">Popular Games</NavDropdown.Item>
-              <NavDropdown.Item href="/available-games" key="available-games" active={pathName === '/available-games'}>Available Games at the iLab</NavDropdown.Item>
+              <NavDropdown.Item href="/popular" key="popular" active={pathName === '/popular'}>Popular Games</NavDropdown.Item>
+              <NavDropdown.Item href="/available" key="available" active={pathName === '/available'>Available Games at the iLab</NavDropdown.Item>
             </NavDropdown>
           </Nav>
           <Nav>
