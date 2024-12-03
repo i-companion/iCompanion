@@ -1,7 +1,8 @@
 import { getServerSession } from 'next-auth';
 import authOptions from '@/lib/authOptions';
 import { loggedInProtectedPage } from '@/lib/page-protection';
-import { Container, Row, Col } from 'react-bootstrap';
+import { Container, Row, Col, Card } from 'react-bootstrap';
+import AvailableCard from '@/components/AvailableCard';
 
 const Available = async () => {
   // Protect the page, only logged in users can access it.
@@ -16,7 +17,9 @@ const Available = async () => {
       <Container id="list" fluid className="py-3">
         <Row>
           <Col>
-            <h1>Available Games page is currently being cooked.</h1>
+            <Row className="g-4 ps-5 pe-5">
+              <AvailableCard />
+            </Row>
           </Col>
         </Row>
       </Container>
