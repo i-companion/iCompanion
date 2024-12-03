@@ -12,6 +12,7 @@ const Available = async () => {
       user: { email: string; id: string; randomKey: string };
     } | null,
   );
+  
   return (
     <main>
       <Container id="list" fluid className="py-3">
