@@ -4,7 +4,7 @@ import { loggedInProtectedPage } from '@/lib/page-protection';
 import { Container, Row, Col, Card } from 'react-bootstrap';
 import AvailableCard from '@/components/AvailableCard';
 
-const Available = async () => {
+const AvailableGames = async () => {
   // Protect the page, only logged in users can access it.
   const session = await getServerSession(authOptions);
   loggedInProtectedPage(
@@ -27,4 +27,4 @@ const Available = async () => {
   );
 };
 
-export default Available;
+export default AvailableGames;
