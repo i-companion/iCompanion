@@ -1,56 +1,5 @@
 {
-  "node": {
-    "02024c94163d7558c00ed3dc5ed05b3d61783210": {
-      "workers": {
-        "app/profile/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2FAbberts%2FDocuments%2FGitHub%2FICS%20314%2Ffinal%20project%2FiCompanion%2Fsrc%2Flib%2FdbActions.ts%22%2C%5B%22editStuff%22%2C%22addStuff%22%2C%22changePassword%22%2C%22deleteStuff%22%2C%22createUser%22%5D%5D%5D&__client_imported__=true!",
-        "app/auth/signup/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2FAbberts%2FDocuments%2FGitHub%2FICS%20314%2Ffinal%20project%2FiCompanion%2Fsrc%2Flib%2FdbActions.ts%22%2C%5B%22editStuff%22%2C%22addStuff%22%2C%22changePassword%22%2C%22deleteStuff%22%2C%22createUser%22%5D%5D%5D&__client_imported__=true!"
-      },
-      "layer": {
-        "app/profile/page": "action-browser",
-        "app/auth/signup/page": "action-browser"
-      }
-    },
-    "0338c7fe6947bff09d66bead9581e5ebb40878d2": {
-      "workers": {
-        "app/profile/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2FAbberts%2FDocuments%2FGitHub%2FICS%20314%2Ffinal%20project%2FiCompanion%2Fsrc%2Flib%2FdbActions.ts%22%2C%5B%22editStuff%22%2C%22addStuff%22%2C%22changePassword%22%2C%22deleteStuff%22%2C%22createUser%22%5D%5D%5D&__client_imported__=true!",
-        "app/auth/signup/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2FAbberts%2FDocuments%2FGitHub%2FICS%20314%2Ffinal%20project%2FiCompanion%2Fsrc%2Flib%2FdbActions.ts%22%2C%5B%22editStuff%22%2C%22addStuff%22%2C%22changePassword%22%2C%22deleteStuff%22%2C%22createUser%22%5D%5D%5D&__client_imported__=true!"
-      },
-      "layer": {
-        "app/profile/page": "action-browser",
-        "app/auth/signup/page": "action-browser"
-      }
-    },
-    "3209c941028a94d5cea498b49815401ad7d1b823": {
-      "workers": {
-        "app/profile/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2FAbberts%2FDocuments%2FGitHub%2FICS%20314%2Ffinal%20project%2FiCompanion%2Fsrc%2Flib%2FdbActions.ts%22%2C%5B%22editStuff%22%2C%22addStuff%22%2C%22changePassword%22%2C%22deleteStuff%22%2C%22createUser%22%5D%5D%5D&__client_imported__=true!",
-        "app/auth/signup/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2FAbberts%2FDocuments%2FGitHub%2FICS%20314%2Ffinal%20project%2FiCompanion%2Fsrc%2Flib%2FdbActions.ts%22%2C%5B%22editStuff%22%2C%22addStuff%22%2C%22changePassword%22%2C%22deleteStuff%22%2C%22createUser%22%5D%5D%5D&__client_imported__=true!"
-      },
-      "layer": {
-        "app/profile/page": "action-browser",
-        "app/auth/signup/page": "action-browser"
-      }
-    },
-    "88fe3d781d782d90710d21bcba4f40ff700705b1": {
-      "workers": {
-        "app/profile/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2FAbberts%2FDocuments%2FGitHub%2FICS%20314%2Ffinal%20project%2FiCompanion%2Fsrc%2Flib%2FdbActions.ts%22%2C%5B%22editStuff%22%2C%22addStuff%22%2C%22changePassword%22%2C%22deleteStuff%22%2C%22createUser%22%5D%5D%5D&__client_imported__=true!",
-        "app/auth/signup/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2FAbberts%2FDocuments%2FGitHub%2FICS%20314%2Ffinal%20project%2FiCompanion%2Fsrc%2Flib%2FdbActions.ts%22%2C%5B%22editStuff%22%2C%22addStuff%22%2C%22changePassword%22%2C%22deleteStuff%22%2C%22createUser%22%5D%5D%5D&__client_imported__=true!"
-      },
-      "layer": {
-        "app/profile/page": "action-browser",
-        "app/auth/signup/page": "action-browser"
-      }
-    },
-    "d736e9afc7b3efe95695e02393d9b22336b77ffa": {
-      "workers": {
-        "app/profile/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2FAbberts%2FDocuments%2FGitHub%2FICS%20314%2Ffinal%20project%2FiCompanion%2Fsrc%2Flib%2FdbActions.ts%22%2C%5B%22editStuff%22%2C%22addStuff%22%2C%22changePassword%22%2C%22deleteStuff%22%2C%22createUser%22%5D%5D%5D&__client_imported__=true!",
-        "app/auth/signup/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2FAbberts%2FDocuments%2FGitHub%2FICS%20314%2Ffinal%20project%2FiCompanion%2Fsrc%2Flib%2FdbActions.ts%22%2C%5B%22editStuff%22%2C%22addStuff%22%2C%22changePassword%22%2C%22deleteStuff%22%2C%22createUser%22%5D%5D%5D&__client_imported__=true!"
-      },
-      "layer": {
-        "app/profile/page": "action-browser",
-        "app/auth/signup/page": "action-browser"
-      }
-    }
-  },
+  "node": {},
   "edge": {},
-  "encryptionKey": "PX9Mx/d6vtVbEmM2xbaBc9acfGCCG3+9sf6GzmB25P4="
+  "encryptionKey": "mr5UNW81XXuopNcqYlA+zYTQ7oLjk7DpNt3cZW/HfnE="
 }

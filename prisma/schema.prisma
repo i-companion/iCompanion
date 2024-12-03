@@ -51,8 +51,8 @@ model Profile {
   owner       String
 }
 
-model Interests {
-  valorant          String
-  leagueOfLegends   String
-  callOfDuty        String
+model Interests { 
+  valorant          boolean @default(false)
+  leagueOfLegends   boolean @default(false)
+  callOfDuty        boolean @default(false)
 }
