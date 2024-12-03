@@ -53,6 +53,6 @@ model Profile {
 
 model Interests {
   valorant          String
-  league-of-legends String
-  call-of-duty      String
+  leagueOfLegends   String
+  callOfDuty        String
 }
