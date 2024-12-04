@@ -92,3 +92,21 @@ export async function changePassword(credentials: { email: string; password: str
     },
   });
 }
+
+
+/**
+export async function createProfile(profile: Profile) {
+  await prisma.profile.create({
+    where: { id: profile.id },
+    data: {
+      name: profile.name,
+      discord: profile.discord,
+      email: profile.email,
+
+
+    },
+  });
+  // After adding, redirect to the list page
+  redirect('/list');
+}
+*/

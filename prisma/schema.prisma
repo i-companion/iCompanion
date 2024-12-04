@@ -18,10 +18,15 @@ enum Role {
   ADMIN
 }
 
+// profile Profile?
+// this ensures a one-to-one relation between the user and profile
+// link to source: https://www.prisma.io/docs/orm/prisma-schema/data-model/relations/one-to-one-relations
+
 model User {
   id       Int    @id @default(autoincrement())
   email    String @unique
   password String
+  profile  Profile?
   role     Role   @default(USER)
 }
 
@@ -38,4 +43,31 @@ model Stuff {
   quantity  Int
   condition Condition
   owner     String
+}
+
+model Profile {
+  id          Int       @id @default(autoincrement())
+  userId      Int       @unique
+  user        User      @relation(fields: [userId], references: [id])
+  name        String 
+  discord     String
+  email       String
+  image       String
+  interests   Interests[]
+  description String
+}
+
+model Interests {
+  id              Int       @id @default(autoincrement())
+  games           Game[]
+  profileId       Int?
+  Profile         Profile?   @relation(fields: [profileId], references: [id], onUpdate: Cascade)
+}
+
+model Game {
+  id          Int         @id @default(autoincrement())
+  name        String      @unique
+  isLiked     Boolean     @default(false)
+  Interests   Interests?  @relation(fields:[interestId], references: [id], onUpdate: Cascade)  
+  interestId  Int?
 }
