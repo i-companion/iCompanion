@@ -27,9 +27,9 @@ model User {
 }
 
 model Profile {
-  id          Int       @id @default(autoincrement())
-  userId      Int       @unique
-  user        User      @relation(fields: [userId], references: [id])
+  id          Int         @id @default(autoincrement())
+  userId      Int         @unique
+  user        User        @relation(fields: [userId], references: [id])
   name        String
   discord     String
   email       String
@@ -38,15 +38,15 @@ model Profile {
 }
 
 model Interests {
-  id          Int     @id @default(autoincrement())
-  profileId   Int
-  gameId      Int
-  Profile     Profile @relation(fields: [profileId], references: [id], onUpdate: Cascade)
-  Game        Game    @relation(fields: [gameId], references: [id], onUpdate: Cascade)
+  id        Int     @id @default(autoincrement())
+  profileId Int
+  gameId    Int
+  Profile   Profile @relation(fields: [profileId], references: [id], onUpdate: Cascade)
+  Game      Game    @relation(fields: [gameId], references: [id], onUpdate: Cascade)
 }
 
 model Game {
-  id          Int         @id @default(autoincrement())
-  name        String      @unique
-  interests   Interests[]
+  id        Int         @id @default(autoincrement())
+  name      String      @unique
+  interests Interests[]
 }
