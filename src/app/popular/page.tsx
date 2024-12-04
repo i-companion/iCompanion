@@ -1,27 +1,25 @@
-import { getServerSession } from 'next-auth';
-import authOptions from '@/lib/authOptions';
-import { loggedInProtectedPage } from '@/lib/page-protection';
-import { Container, Row, Col } from 'react-bootstrap';
+import { getPopularGames } from '@/lib/popularGames';
 
-const Popular = async () => {
-  // Protect the page, only logged in users can access it.
-  const session = await getServerSession(authOptions);
-  loggedInProtectedPage(
-    session as {
-      user: { email: string; id: string; randomKey: string };
-    } | null,
-  );
+type PopularGame = {
+  name: string;
+  count: number;
+};
+
+const PopularGamesPage = async () => {
+  const popularGames: PopularGame[] = await getPopularGames();
+
   return (
     <main>
-      <Container id="list" fluid className="py-3">
-        <Row>
-          <Col>
-            <h1>Popular page is currently being cooked.</h1>
-          </Col>
-        </Row>
-      </Container>
+      <h1>Top 3 Popular Games</h1>
+      <ul>
+        {popularGames.map(({ name, count }: PopularGame) => (
+          <li key={name}>
+            <strong>{name}</strong>: {count} players
+          </li>
+        ))}
+      </ul>
     </main>
   );
 };
 
-export default Popular;
+export default PopularGamesPage;

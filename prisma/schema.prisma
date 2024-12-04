@@ -9,8 +9,8 @@ generator client {
 }
 
 datasource db {
-  provider  = "postgresql"
-  url  	    = env("DATABASE_URL")
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
 }
 
 enum Role {
@@ -19,23 +19,34 @@ enum Role {
 }
 
 model User {
-  id       Int    @id @default(autoincrement())
-  email    String @unique
+  id       Int      @id @default(autoincrement())
+  email    String   @unique
   password String
-  role     Role   @default(USER)
+  role     Role     @default(USER)
+  profile  Profile?
 }
 
-enum Condition {
-  excellent
-  good
-  fair
-  poor
+model Profile {
+  id          Int         @id @default(autoincrement())
+  userId      Int         @unique
+  user        User        @relation(fields: [userId], references: [id])
+  name        String
+  discord     String
+  email       String
+  interests   Interests[]
+  description String
 }
 
-model Stuff {
-  id        Int       @id @default(autoincrement())
-  name      String
-  quantity  Int
-  condition Condition
-  owner     String
+model Interests {
+  id        Int     @id @default(autoincrement())
+  profileId Int
+  gameId    Int
+  Profile   Profile @relation(fields: [profileId], references: [id], onUpdate: Cascade)
+  Game      Game    @relation(fields: [gameId], references: [id], onUpdate: Cascade)
+}
+
+model Game {
+  id        Int         @id @default(autoincrement())
+  name      String      @unique
+  interests Interests[]
 }
