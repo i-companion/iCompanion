@@ -18,6 +18,10 @@ type SignUpForm = {
     valorant?: boolean;
     leagueOfLegends?: boolean;
     callOfDuty?: boolean;
+    apexLegends?: boolean;
+    overwatch?: boolean;
+    genshinImpact?: boolean;
+    superSmashBros?: boolean;
   };
 };
 
@@ -39,6 +43,10 @@ const SignUp = () => {
       valorant: Yup.boolean(),
       leagueOfLegends: Yup.boolean(),
       callOfDuty: Yup.boolean(),
+      overwatch: Yup.boolean(),
+      genshinImpact: Yup.boolean(),
+      apexLegends: Yup.boolean(),
+      superSmashBros: Yup.boolean(),
     }),
   });
 
@@ -157,6 +165,38 @@ const SignUp = () => {
                         className="form-check-input"
                       />
                       <label className="form-check-label">Call of Duty</label>
+                    </div>
+                    <div className="form-check">
+                      <input
+                        type="checkbox"
+                        {...register('interests.overwatch')}
+                        className="form-check-input"
+                      />
+                      <label className="form-check-label">Overwatch</label>
+                    </div>
+                    <div className="form-check">
+                      <input
+                        type="checkbox"
+                        {...register('interests.genshinImpact')}
+                        className="form-check-input"
+                      />
+                      <label className="form-check-label">Genshin Impact</label>
+                    </div>
+                    <div className="form-check">
+                      <input
+                        type="checkbox"
+                        {...register('interests.superSmashBros')}
+                        className="form-check-input"
+                      />
+                      <label className="form-check-label">Super Smash Bros</label>
+                    </div>
+                    <div className="form-check">
+                      <input
+                        type="checkbox"
+                        {...register('interests.apexLegends')}
+                        className="form-check-input"
+                      />
+                      <label className="form-check-label">Apex Legends</label>
                     </div>
                   </Form.Group>
 
