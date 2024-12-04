@@ -1,0 +1,39 @@
+.main {
+    width: 30%;
+    padding: 0.7rem;
+    margin-left: 1rem;
+    background-color: white;
+    border: 2px solid black;
+ }
+ .header {
+    display: flex;
+    margin-bottom: 0.7rem;
+    justify-content: space-between;
+    align-items: center;
+ }
+ .header button {
+    font-size: 1.4rem;
+    cursor: pointer;
+ }
+ .body {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+ }
+ .box {
+    height: 2rem;
+    background-color: white;
+    border: 1px solid #ccc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+ }
+ .box.empty {
+    background-color: lightgreen;
+    cursor: default;
+ }
+ .box.selected {
+    background-color: green;
+    color: white;
+ }

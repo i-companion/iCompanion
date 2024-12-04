@@ -2,7 +2,7 @@ import { getServerSession } from 'next-auth';
 import authOptions from '@/lib/authOptions';
 import { loggedInProtectedPage } from '@/lib/page-protection';
 import { Container, Row, Col } from 'react-bootstrap';
-
+import Calendar from '@/components/Calendar';
 const Schedule = async () => {
   // Protect the page, only logged in users can access it.
   const session = await getServerSession(authOptions);
@@ -16,7 +16,7 @@ const Schedule = async () => {
       <Container id="list" fluid className="py-3">
         <Row>
           <Col>
-            <h1>Schedule page is currently being cooked.</h1>
+            <Calendar />
           </Col>
         </Row>
       </Container>
