@@ -79,10 +79,6 @@ Running seed command `ts-node --compiler-options {"module":"CommonJS"} prisma/se
 Seeding the database
 Creating user: admin@foo.com with role: ADMIN
 Creating user: john@foo.com with role: USER
-Adding stuff: Basket (john@foo.com)
-Adding stuff: Bicycle (john@foo.com)
-Adding stuff: Banana (admin@foo.com)
-Adding stuff: Boogie Board (admin@foo.com)
 
 🌱 The seed command has been executed.
 $
@@ -166,9 +162,6 @@ The src/ directory has this structure:
 
 app/
 
-  add/ # The add route
-    page.tsx # The Add Stuff Page
-
   admin/
     page.tsx # The Admin Page
 
@@ -188,12 +181,6 @@ app/
     signup/
       page.tsx # The Sign Up / Register Page
 
-  edit/
-    page.tsx # The Edit Stuff Page
-
-  list/
-    page.tsx # The List Stuff Page
-
   not-authorized/
     page.tsx # The Not Authorized Page
 
@@ -204,19 +191,12 @@ app/
   providers.tsx # Session providers.
 
   components/
-    AddStuffForm.tsx # The React Hook Form for adding stuff.
-
-    EditStuffForm.tsx # The Edit Stuff Form.
 
     Footer.tsx # The application footer.
 
     LoadingSpinner.tsx # Indicates working.
 
     Navbar.tsx # The application navbar.
-
-    StuffItem.tsx # Row in the list stuff page.
-
-    StuffItemAdmin.tsx # Row in the admin list stuff page.
 
   lib/
 

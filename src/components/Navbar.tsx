@@ -8,6 +8,8 @@ import { BoxArrowRight, PersonFill, PersonPlusFill } from 'react-bootstrap-icons
 const NavBar: React.FC = () => {
   const { data: session } = useSession();
   const currentUser = session?.user?.email;
+  const userWithRole = session?.user as { email: string; randomKey: string };
+  const role = userWithRole?.randomKey;
   const pathName = usePathname();
 
   return (
@@ -32,6 +34,15 @@ const NavBar: React.FC = () => {
           <Nav>
             {session ? (
               <>
+
+                {/* if user is an admin */}
+
+                {currentUser && role === 'ADMIN' ? (
+                  <h1 style={{ color: "red" }}>ADMIN</h1>
+                ) : (
+                  ''
+                )}
+
                 <Nav.Link href="/profile" key="profile" active={pathName === '/profile'}>
                   Profile
                 </Nav.Link>
