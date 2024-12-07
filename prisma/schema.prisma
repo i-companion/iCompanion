@@ -24,18 +24,3 @@ model User {
   password String
   role     Role   @default(USER)
 }
-
-enum Condition {
-  excellent
-  good
-  fair
-  poor
-}
-
-model Stuff {
-  id        Int       @id @default(autoincrement())
-  name      String
-  quantity  Int
-  condition Condition
-  owner     String
-}
