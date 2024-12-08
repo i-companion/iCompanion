@@ -9,8 +9,8 @@ generator client {
 }
 
 datasource db {
-  provider  = "postgresql"
-  url  	    = env("DATABASE_URL")
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
 }
 
 enum Role {
@@ -19,8 +19,21 @@ enum Role {
 }
 
 model User {
-  id       Int    @id @default(autoincrement())
-  email    String @unique
+  id       Int      @id @default(autoincrement())
+  email    String   @unique
   password String
-  role     Role   @default(USER)
+  role     Role     @default(USER)
+}
+
+// intersts list order: [valorant, league of legends, call of duty]
+
+model Profile {
+  id          Int         @id @default(autoincrement())
+  name        String
+  discord     String
+  email       String
+  image       String
+  description String
+  interests   Boolean[]
+  owner       String
 }

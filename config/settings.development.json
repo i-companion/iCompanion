@@ -4,10 +4,24 @@
     { "email": "john@foo.com", "password": "changeme" }
   ],
 
-  "defaultData": [
-    { "name": "Basket", "quantity": 3, "owner": "john@foo.com", "condition": "excellent" },
-    { "name": "Bicycle", "quantity": 2, "owner": "john@foo.com", "condition": "poor" },
-    { "name": "Banana", "quantity": 2, "owner": "admin@foo.com", "condition": "good" },
-    { "name": "Boogie Board", "quantity": 2, "owner": "admin@foo.com", "condition": "excellent" }
+  "defaultProfiles": [
+    {
+      "name": "admin person",
+      "discord": "admin1111",
+      "email": "admin@foo.com",
+      "image": "https://github.com/philipmjohnson.png",
+      "description": "i am an admin",
+      "interests": [ true, false, true ],
+      "owner": "admin@foo.com"
+    },
+    {
+      "name": "john foo",
+      "discord": "john1234",
+      "email": "john@foo.com",
+      "image": "https://github.com/philipmjohnson.png",
+      "description": "i like games",
+      "interests": [ false, true, true ],
+      "owner": "john@foo.com"
+    }
   ]
 }
