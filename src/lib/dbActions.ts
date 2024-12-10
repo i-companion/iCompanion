@@ -35,7 +35,7 @@ export async function createProfile(credentials: { name: string; discord: string
         email: credentials.email,
         image: credentials.image,
         description: credentials.description,
-        interests: credentials.interests, // Just pass the array directly
+        interests: credentials.interests,
         owner: credentials.email,
       },
     });
