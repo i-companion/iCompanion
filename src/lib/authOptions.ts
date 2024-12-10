@@ -1,4 +1,3 @@
-/* eslint-disable arrow-body-style */
 import { compare } from 'bcrypt';
 import { type NextAuthOptions } from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
@@ -27,6 +26,9 @@ const authOptions: NextAuthOptions = {
           where: {
             email: credentials.email,
           },
+          include: {
+            profile: true,
+          },
         });
         if (!user) {
           return null;
@@ -40,7 +42,8 @@ const authOptions: NextAuthOptions = {
         return {
           id: `${user.id}`,
           email: user.email,
-          randomKey: user.role,
+          role: user.role,
+          profile: user.profile,
         };
       },
     }),
@@ -48,30 +51,29 @@ const authOptions: NextAuthOptions = {
   pages: {
     signIn: '/auth/signin',
     signOut: '/auth/signout',
-    //   error: '/auth/error',
-    //   verifyRequest: '/auth/verify-request',
-    //   newUser: '/auth/new-user'
   },
   callbacks: {
     session: ({ session, token }) => {
-      // console.log('Session Callback', { session, token })
       return {
         ...session,
         user: {
           ...session.user,
           id: token.id,
-          randomKey: token.randomKey,
+          role: token.role,
+          profile: token.profile,
+          interests: token.interests,
         },
       };
     },
     jwt: ({ token, user }) => {
-      // console.log('JWT Callback', { token, user })
       if (user) {
         const u = user as unknown as any;
         return {
           ...token,
           id: u.id,
-          randomKey: u.randomKey,
+          role: u.role,
+          profile: u.profile,
+          interests: u.profile?.interests,
         };
       }
       return token;

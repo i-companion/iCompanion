@@ -10,8 +10,8 @@
       "discord": "admin1111",
       "email": "admin@foo.com",
       "image": "https://github.com/philipmjohnson.png",
-      "description": "i am an admin",
-      "interests": [ true, false, true ],
+      "description": "I am an admin",
+      "interests": [ true, false, true, true, true, true, false, true ],
       "owner": "admin@foo.com"
     },
     {
@@ -19,8 +19,8 @@
       "discord": "john1234",
       "email": "john@foo.com",
       "image": "https://github.com/philipmjohnson.png",
-      "description": "i like games",
-      "interests": [ false, true, true ],
+      "description": "I like games",
+      "interests": [ false, true, true, true, true, false, false, true ],
       "owner": "john@foo.com"
     }
   ]

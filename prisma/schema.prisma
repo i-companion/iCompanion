@@ -18,8 +18,7 @@ model User {
   password  String
   role      Role     @default(USER)
   createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  profile   Profile? @relation(fields: [email], references: [owner])
+  profile   Profile?
 }
 
 model Profile {
@@ -31,7 +30,7 @@ model Profile {
   interests   Boolean[]  
   owner       String     @unique
   user        User       @relation(fields: [owner], references: [email])
-  deletedAt   DateTime?  @default(null)
+  deletedAt   DateTime?
 
   @@index([owner])
 }

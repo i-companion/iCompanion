@@ -24,12 +24,12 @@ async function main() {
         role,
       },
     });
-    // console.log(`  Created user: ${user.email} with role: ${user.role}`);
   });
-  config.defaultProfiles.forEach(async (profile, index) => {
+
+  config.defaultProfiles.forEach(async (profile) => {
     console.log(`  Adding profile: ${profile.name} (${profile.owner})`);
     await prisma.profile.upsert({
-      where: { id: index },
+      where: { owner: profile.owner },
       update: {},
       create: {
         name: profile.name,
@@ -43,6 +43,7 @@ async function main() {
     });
   });
 }
+
 main()
   .then(() => prisma.$disconnect())
   .catch(async (e) => {
