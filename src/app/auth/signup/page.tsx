@@ -134,7 +134,7 @@ const SignUp = () => {
                     <div className="form-check">
                       <input
                         type="checkbox"
-                        {...register('interests[0]')}
+                        {...register('interests.0')}
                         className="form-check-input"
                       />
                       <label className="form-check-label">Valorant</label>
@@ -142,7 +142,7 @@ const SignUp = () => {
                     <div className="form-check">
                       <input
                         type="checkbox"
-                        {...register('interests[1]')}
+                        {...register('interests.1')}
                         className="form-check-input"
                       />
                       <label className="form-check-label">League of Legends</label>
@@ -150,7 +150,7 @@ const SignUp = () => {
                     <div className="form-check">
                       <input
                         type="checkbox"
-                        {...register('interests[2]')}
+                        {...register('interests.2')}
                         className="form-check-input"
                       />
                       <label className="form-check-label">Call of Duty</label>
@@ -158,7 +158,7 @@ const SignUp = () => {
                     <div className="form-check">
                       <input
                         type="checkbox"
-                        {...register('interests[3]')}
+                        {...register('interests.3')}
                         className="form-check-input"
                       />
                       <label className="form-check-label">Overwatch</label>
@@ -166,7 +166,7 @@ const SignUp = () => {
                     <div className="form-check">
                       <input
                         type="checkbox"
-                        {...register('interests[4]')}
+                        {...register('interests.4')}
                         className="form-check-input"
                       />
                       <label className="form-check-label">Genshin Impact</label>
@@ -174,7 +174,7 @@ const SignUp = () => {
                     <div className="form-check">
                       <input
                         type="checkbox"
-                        {...register('interests[5]')}
+                        {...register('interests.5')}
                         className="form-check-input"
                       />
                       <label className="form-check-label">Super Smash Bros</label>
@@ -182,7 +182,7 @@ const SignUp = () => {
                     <div className="form-check">
                       <input
                         type="checkbox"
-                        {...register('interests[6]')}
+                        {...register('interests.6')}
                         className="form-check-input"
                       />
                       <label className="form-check-label">Apex Legends</label>
