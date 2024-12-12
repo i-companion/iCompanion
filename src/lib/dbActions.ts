@@ -1,23 +1,48 @@
 'use server';
 
 import { hash } from 'bcrypt';
-import { redirect } from 'next/navigation';
 import { prisma } from './prisma';
 
 /**
- * Creates a new user in the database.
- * @param credentials, an object with the following properties: email, password.
+ * Creates a new user in the database, along with their profile and game interests.
+ * @param credentials - an object with the following properties: email, password, name, discord, gameIds.
  */
-export async function createUser(credentials: { email: string; password: string }) {
+export async function createUser(credentials: {
+  email: string;
+  password: string;
+  name: string;
+  discord: string;
+  gameIds: number[];
+}) {
   try {
     const hashedPassword = await hash(credentials.password, 10);
 
-    await prisma.user.create({
+    const user = await prisma.user.create({
       data: {
         email: credentials.email,
         password: hashedPassword,
+        profile: {
+          create: {
+            name: credentials.name,
+            discord: credentials.discord,
+            email: credentials.email,
+            description: 'Default description',
+          },
+        },
       },
     });
+
+    await Promise.all(
+      credentials.gameIds.map((gameId) =>
+        prisma.interests.create({
+          data: {
+            userId: user.id,
+            gameId,
+          },
+        })
+      )
+    );
+
   } catch (error) {
     console.error('Error creating user:', error);
     throw new Error('Failed to create user');
@@ -26,7 +51,7 @@ export async function createUser(credentials: { email: string; password: string 
 
 /**
  * Changes the password of an existing user in the database.
- * @param credentials, an object with the following properties: email, password.
+ * @param credentials - an object with the following properties: email, password.
  */
 export async function changePassword(credentials: { email: string; password: string }) {
   try {
