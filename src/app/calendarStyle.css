@@ -1,39 +1,54 @@
 .main {
-    width: 30%;
-    padding: 0.7rem;
-    margin-left: 1rem;
-    background-color: white;
-    border: 2px solid black;
- }
- .header {
-    display: flex;
-    margin-bottom: 0.7rem;
-    justify-content: space-between;
-    align-items: center;
- }
- .header button {
-    font-size: 1.4rem;
-    cursor: pointer;
- }
- .body {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    gap: 5px;
- }
- .box {
-    height: 2rem;
-    background-color: white;
-    border: 1px solid #ccc;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
- }
- .box.empty {
-    background-color: lightgreen;
-    cursor: default;
- }
- .box.selected {
-    background-color: green;
-    color: white;
- }
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+}
+
+.header {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   width: 300px;
+}
+
+.body {
+   display: grid;
+   grid-template-columns: repeat(7, 1fr);
+   gap: 5px;
+   margin: 10px 0;
+}
+
+.box {
+   width: 40px;
+   height: 40px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   border: 1px solid #ccc;
+   cursor: pointer;
+}
+
+.box.selected {
+   background-color: #4caf50;
+   color: white;
+}
+
+.box.empty {
+   background-color: #f9f9f9;
+   pointer-events: none;
+}
+
+.selected-date {
+   margin-top: 20px;
+   text-align: center;
+}
+
+.available-times ul {
+   list-style: none;
+   padding: 0;
+}
+
+.available-times li {
+   padding: 5px 0;
+   border-bottom: 1px solid #ccc;
+}

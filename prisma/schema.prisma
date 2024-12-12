@@ -24,3 +24,9 @@ model User {
   password String
   role     Role   @default(USER)
 }
+
+model AvailableTime {
+  id     Int      @id @default(autoincrement())
+  date   DateTime
+  time   String
+}
