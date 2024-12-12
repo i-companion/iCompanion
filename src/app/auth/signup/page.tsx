@@ -52,7 +52,19 @@ const SignUp = () => {
   });
 
   const onSubmit = async (data: SignUpForm) => {
-    await createUser(data);
+    const gameIds = [];
+    if (data.interests.valorant) gameIds.push('1');
+    if (data.interests.leagueOfLegends) gameIds.push('2');
+    if (data.interests.callOfDuty) gameIds.push('3');
+
+    await createUser({
+      email: data.email,
+      password: data.password,
+      name: `${data.firstName} ${data.lastName}`,
+      discord: data.discord,
+      gameIds,
+    });
+
     await signIn('credentials', { callbackUrl: '/profile', ...data });
   };
 
