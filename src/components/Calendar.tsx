@@ -1,75 +1,50 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "/src/app/calendarStyle.css";
 import axios from "axios";
 
 function Calendar() {
   const [sDate, setsDate] = useState(new Date());
-  const [availableTimes, setAvailableTimes] = useState<string[]>([]);
-  const [selectedTime, setSelectedTime] = useState<string | null>(null);
-
-//list of time slots
-  const timeSlots = [
+  const [timeSlots, setTimeSlots] = useState<string[]>([
     "11:00 AM - 12:00 PM",
     "12:00 PM - 1:00 PM",
     "1:00 PM - 2:00 PM",
     "2:00 PM - 3:00 PM",
     "3:00 PM - 4:00 PM",
-  ];
+  ]);
 
-  const findMonthDays = (y: any, m: any) => {
-    return new Date(y, m + 1, 0).getDate();
-  };
+  const [dateTimesMap, setDateTimesMap] = useState<Record<string, string[]>>(
+    {}
+  );
 
-  const findFirstDay = (y: any, m: any) => {
-    return new Date(y, m, 1).getDay();
-  };
+  const availableTimesForDate = dateTimesMap[sDate.toDateString()] || [];
 
-  const changeToPrevMonth = () => {
-    setsDate((pDate) => {
-      const pMonth = pDate.getMonth() - 1;
-      const pYear = pDate.getFullYear();
-      return new Date(pYear, pMonth);
-    });
-  };
-
-  const changeToNextMonth = () => {
-    setsDate((pDate) => {
-      const nMonth = pDate.getMonth() + 1;
-      const nYear = pDate.getFullYear();
-      return new Date(nYear, nMonth);
-    });
-  };
-
-  const handleDateClick = (date: any) => {
+  const handleDateClick = (date: Date) => {
     setsDate(date);
-    fetchAvailableTimes(date); // Fetch available times for the selected date
-  };
-
-  const fetchAvailableTimes = async (date: Date) => {
-    try {
-      const response = await axios.get(`/api/available-times?date=${date.toISOString()}`);
-      if (response.status === 200) {
-        setAvailableTimes(response.data);  // Update the available times list
-      }
-    } catch (error) {
-      console.error("Error fetching available times", error);
-    }
   };
 
   const handleTimeSelect = async (time: string) => {
-    setSelectedTime(time);
+    const dateKey = sDate.toDateString();
+
+    // Update the available times for the current date
+    setDateTimesMap((prevMap) => ({
+      ...prevMap,
+      [dateKey]: [...(prevMap[dateKey] || []), time].sort(),
+    }));
+
+    // Remove the selected time from the general time slots
+    setTimeSlots((prevSlots) => prevSlots.filter((slot) => slot !== time));
 
     try {
-      // Save the selected available time
-      const response = await axios.post('/api/save-time', {
+      // Save the selected available time to the backend
+      const response = await axios.post("/api/save-time", {
         date: sDate.toISOString(),
         time,
       });
 
       if (response.status === 200) {
-        alert('Available time saved successfully!');
+        console.log("Available time saved successfully!");
       } else {
         console.error("Error saving available time", response.data);
       }
@@ -78,12 +53,42 @@ function Calendar() {
     }
   };
 
+  const handleRemoveTime = async (time: string) => {
+    const dateKey = sDate.toDateString();
+
+    // Update the available times for the current date
+    setDateTimesMap((prevMap) => ({
+      ...prevMap,
+      [dateKey]: (prevMap[dateKey] || []).filter(
+        (availableTime) => availableTime !== time
+      ),
+    }));
+
+    // Add the removed time back to the general time slots
+    setTimeSlots((prevSlots) => [...prevSlots, time].sort());
+
+    try {
+      // Inform the backend that the time is no longer available
+      const response = await axios.post("/api/remove-time", {
+        date: sDate.toISOString(),
+        time,
+      });
+
+      if (response.status === 200) {
+        console.log("Available time removed successfully!");
+      } else {
+        console.error("Error removing available time", response.data);
+      }
+    } catch (error) {
+      console.error("Error removing available time", error);
+    }
+  };
+
   const showCalendar = () => {
-    const currDate = new Date();
     const y = sDate.getFullYear();
     const m = sDate.getMonth();
-    const mDays = findMonthDays(y, m);
-    const fDay = findFirstDay(y, m);
+    const mDays = new Date(y, m + 1, 0).getDate();
+    const fDay = new Date(y, m, 1).getDay();
 
     const allDays = [];
 
@@ -116,14 +121,18 @@ function Calendar() {
       <h3>Schedule</h3>
       <div className="main">
         <div className="header">
-          <button onClick={changeToPrevMonth}>{'<'}</button>
+          <button onClick={() => setsDate(new Date(sDate.getFullYear(), sDate.getMonth() - 1))}>
+            {"<"}
+          </button>
           <h2>
             {sDate.toLocaleString("default", {
               month: "long",
               year: "numeric",
             })}
           </h2>
-          <button onClick={changeToNextMonth}>{'>'}</button>
+          <button onClick={() => setsDate(new Date(sDate.getFullYear(), sDate.getMonth() + 1))}>
+            {">"}
+          </button>
         </div>
 
         <div className="body">{showCalendar()}</div>
@@ -131,15 +140,12 @@ function Calendar() {
         {sDate && (
           <div className="selected-date">
             <h4>Available Times for {sDate.toLocaleDateString()}</h4>
-            {availableTimes.length > 0 ? (
+            {availableTimesForDate.length > 0 ? (
               <ul>
-                {availableTimes.map((time, index) => (
-                  <li
-                    key={index}
-                    onClick={() => handleTimeSelect(time)}
-                    className={selectedTime === time ? "selected-time" : ""}
-                  >
-                    {time}
+                {availableTimesForDate.map((time, index) => (
+                  <li key={index}>
+                    {time}{" "}
+                    <button onClick={() => handleRemoveTime(time)}>x</button>
                   </li>
                 ))}
               </ul>
@@ -147,18 +153,12 @@ function Calendar() {
               <p>No available times</p>
             )}
 
-            {/* Display predefined time slots */}
             <div>
               <h5>Select an available time slot:</h5>
               <ul>
                 {timeSlots.map((slot, index) => (
                   <li key={index}>
-                    <button
-                      onClick={() => handleTimeSelect(slot)}
-                      className={selectedTime === slot ? "selected-time" : ""}
-                    >
-                      {slot}
-                    </button>
+                    <button onClick={() => handleTimeSelect(slot)}>{slot}</button>
                   </li>
                 ))}
               </ul>
