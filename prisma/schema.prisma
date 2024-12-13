@@ -25,34 +25,20 @@ model User {
   role     Role   @default(USER)
 }
 
-enum Condition {
-  excellent
-  good
-  fair
-  poor
-}
-
-model Stuff {
-  id        Int       @id @default(autoincrement())
-  name      String
-  quantity  Int
-  condition Condition
-  owner     String
-}
-
 model Profile {
+  id          Int   @id @default(autoincrement())
   firstName   String
   lastName    String 
   discord     String
   email       String
-  image       String
-  interests   Interests[]
-  description String
-  owner       String
+//  interests   Interests[]
+  bio         String
+//  owner       User
 }
 
-model Interests { 
-  valorant          boolean @default(false)
-  leagueOfLegends   boolean @default(false)
-  callOfDuty        boolean @default(false)
-}
+
+//model Interests { 
+//  valorant          Boolean @default(false)
+//  leagueOfLegends   Boolean @default(false)
+//  callOfDuty        Boolean @default(false)
+//}
