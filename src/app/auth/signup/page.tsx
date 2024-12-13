@@ -5,7 +5,6 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
 import { Card, Col, Container, Button, Form, Row } from 'react-bootstrap';
-import { createUser } from '@/lib/dbActions';
 
 type SignUpForm = {
   email: string;
@@ -21,7 +20,6 @@ type SignUpForm = {
   };
 };
 
-/** The sign up page. */
 const SignUp = () => {
   const validationSchema = Yup.object().shape({
     email: Yup.string().required('Email is required').email('Email is invalid'),
@@ -57,15 +55,25 @@ const SignUp = () => {
     if (data.interests.leagueOfLegends) gameIds.push('2');
     if (data.interests.callOfDuty) gameIds.push('3');
 
-    await createUser({
-      email: data.email,
-      password: data.password,
-      name: `${data.firstName} ${data.lastName}`,
-      discord: data.discord,
-      gameIds,
+    // Call API route for user creation
+    const res = await fetch('/api/auth/signup', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        email: data.email,
+        password: data.password,
+        name: `${data.firstName} ${data.lastName}`,
+        discord: data.discord,
+        gameIds,
+      }),
     });
 
-    await signIn('credentials', { callbackUrl: '/profile', ...data });
+    const result = await res.json();
+    if (result.success) {
+      await signIn('credentials', { callbackUrl: '/profile', ...data });
+    } else {
+      alert('Error creating user: ' + result.error);
+    }
   };
 
   return (

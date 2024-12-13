@@ -1,5 +1,21 @@
-import NextAuth from 'next-auth';
-import authOptions from '@/lib/authOptions';
+import { NextResponse } from 'next/server';
+import { createUser } from '@/lib/dbActions';
 
-const handler = NextAuth(authOptions);
-export { handler as GET, handler as POST };
+export async function POST(req: Request) {
+  try {
+    const { email, password, name, discord, gameIds } = await req.json();
+
+    const user = await createUser({
+      email,
+      password,
+      name,
+      discord,
+      gameIds,
+    });
+
+    return NextResponse.json({ success: true, user });
+  } catch (error) {
+    console.error('Error in signup API:', error);
+    return NextResponse.json({ success: false, error: error.message }, { status: 500 });
+  }
+}

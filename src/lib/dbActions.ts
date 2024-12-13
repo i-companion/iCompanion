@@ -1,16 +1,14 @@
-import { hash } from 'bcrypt';
+import { hash } from 'bcryptjs';
 import { prisma } from './prisma';
 
 /**
  * Creates a new user in the database.
- * @param credentials, an object with the following properties: email, password, name, discord, gameIds.
+ * @param credentials
  */
 export async function createUser(credentials: { email: string; password: string; name: string; discord: string; gameIds: string[] }) {
   try {
-    // Hash the password
     const hashedPassword = await hash(credentials.password, 10);
 
-    // Create the user with profile information
     const user = await prisma.user.create({
       data: {
         email: credentials.email,
@@ -20,25 +18,30 @@ export async function createUser(credentials: { email: string; password: string;
             name: credentials.name,
             discord: credentials.discord,
             email: credentials.email,
-            description: '', // You can customize the description field if needed
+            description: '',
           },
         },
       },
     });
 
-    // Add interests (gameIds)
     for (const gameId of credentials.gameIds) {
       await prisma.interests.create({
         data: {
-          gameId: parseInt(gameId), // assuming gameId is a string and needs to be parsed
+          gameId: parseInt(gameId, 10),
           userId: user.id,
         },
       });
     }
 
+    return user;
   } catch (error) {
-    console.error('Error creating user:', error);
-    throw new Error('Failed to create user');
+    if (error instanceof Error) {
+      console.error('Error creating user:', error.message, error);
+      throw new Error('Failed to create user: ' + error.message);
+    } else {
+      console.error('Unknown error:', error);
+      throw new Error('An unknown error occurred');
+    }
   }
 }
 
@@ -57,7 +60,12 @@ export async function changePassword(credentials: { email: string; password: str
       },
     });
   } catch (error) {
-    console.error('Error changing password:', error);
-    throw new Error('Failed to change password');
+    if (error instanceof Error) {
+      console.error('Error changing password:', error.message, error);
+      throw new Error('Failed to change password: ' + error.message);
+    } else {
+      console.error('Unknown error:', error);
+      throw new Error('An unknown error occurred');
+    }
   }
 }
