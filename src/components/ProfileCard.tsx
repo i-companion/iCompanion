@@ -1,6 +1,6 @@
 'use client';
 
-import { Profile } from '@/lib/validationSchemas';
+import { Profile } from '@prisma/client';
 import { Row, Col, Card, Image, ListGroup } from 'react-bootstrap';
 
 /* Renders a single row in the List Stuff table. See list/page.tsx. */
@@ -8,16 +8,11 @@ const ProfileCard = ({ profile }: { profile: Profile }) => (
   <Card className="text-center">
     <Card.Header>
       <Card.Title><h1 className="mt-3 mb-3">Profile</h1></Card.Title>
-      <Image src={profile.image} roundedCircle width="200" />
+      <Image src="/uhm-logo.png" alt='Profile Logo' roundedCircle width="200" />
       <Card.Title className="pt-4">
         First name:
         &nbsp;
-        {profile.firstName}
-      </Card.Title>
-      <Card.Title>
-        Last name:
-        &nbsp;
-        {profile.lastName}
+        {profile.name}
       </Card.Title>
     </Card.Header>
     <Card.Body>
@@ -32,6 +27,7 @@ const ProfileCard = ({ profile }: { profile: Profile }) => (
         {profile.email}
       </Card.Title>
       <Row>
+        {/* DISPLAY PROFILE INTERESTS
         <Col>
           <Card.Text>
             Interests:
@@ -40,6 +36,7 @@ const ProfileCard = ({ profile }: { profile: Profile }) => (
             </ListGroup>
           </Card.Text>
         </Col>
+        */}
         <Col>
           <Card.Text>
             About me:
