@@ -92,12 +92,12 @@ function Calendar() {
 
     const allDays = [];
 
-    // For empty cells
+    //empty cells
     for (let p = 0; p < fDay; p++) {
       allDays.push(<div key={`em-${p}`} className="box empty"></div>);
     }
 
-    // Show actual days
+    // Show days
     for (let d = 1; d <= mDays; d++) {
       const date = new Date(y, m, d);
       const isSelected = sDate && date.toDateString() === sDate.toDateString();
