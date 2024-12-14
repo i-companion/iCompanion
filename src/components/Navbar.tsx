@@ -30,6 +30,23 @@ const NavBar: React.FC = () => {
               <NavDropdown.Item href="/popular" key="popular" active={pathName === '/popular'}>Popular Games</NavDropdown.Item>
               <NavDropdown.Item href="/available" key="available" active={pathName === '/available'}>Available Games at the iLab</NavDropdown.Item>
             </NavDropdown>
+            {currentUser && role === 'ADMIN' ? (
+              <Nav.Link id="admin-stuff-nav" href="/add" key="add" active={pathName === '/add'}>
+                Add Game
+              </Nav.Link>
+
+            ) : (
+              ''
+            )}
+            {currentUser && role === 'ADMIN' ? (
+              <Nav.Link id="list-stuff-nav" href="/list" key="list" active={pathName === '/list'}>
+                List Games
+              </Nav.Link>
+            ) : (
+              ''
+            )}
+
+
           </Nav>
           <Nav>
             {session ? (

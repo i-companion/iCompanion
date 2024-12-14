@@ -19,8 +19,30 @@ enum Role {
 }
 
 model User {
-  id       Int    @id @default(autoincrement())
-  email    String @unique
+  id       Int      @id @default(autoincrement())
+  email    String   @unique
   password String
-  role     Role   @default(USER)
+  role     Role     @default(USER)
+  profile  Profile?
+}
+
+model Profile {
+  id          Int         @id @default(autoincrement())
+  userId      Int         @unique
+  user        User        @relation(fields: [userId], references: [id])
+  name        String
+  discord     String
+  email       String
+  description String
+}
+
+model Interests {
+  id        Int     @id @default(autoincrement())
+  gameId    Int
+  userId    Int
+}
+
+model Game {
+  id        Int         @id @default(autoincrement())
+  name      String      @unique
 }
