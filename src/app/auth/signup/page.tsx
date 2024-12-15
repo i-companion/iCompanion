@@ -55,7 +55,6 @@ const SignUp = () => {
     if (data.interests.leagueOfLegends) gameIds.push('2');
     if (data.interests.callOfDuty) gameIds.push('3');
 
-    // Call API route for user creation
     const res = await fetch('/api/auth/signup', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
