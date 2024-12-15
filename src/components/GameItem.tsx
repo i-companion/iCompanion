@@ -16,7 +16,7 @@ const GameItem = ({ name, id }: Game) => (
   <tr>
     <td>{name}</td>
     <td>
-      <Link href={`/edit/${id}`}>Edit</Link>
+      <Link href={`edit/${id}`}>Edit</Link>
     </td>
     <td>
       <Button variant="danger" onClick={() => removeItem(id)}>

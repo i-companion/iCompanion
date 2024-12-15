@@ -1,12 +1,12 @@
 import { getServerSession } from 'next-auth';
 import { notFound } from 'next/navigation';
 import { Game } from '@prisma/client';
-import { authOptions } from '@/app/api/auth/[...nextauth]/route';
+import authOptions from '@/lib/authOptions';
 import { loggedInProtectedPage } from '@/lib/page-protection';
 import { prisma } from '@/lib/prisma';
 import EditGameForm from '@/components/EditGameForm';
 
-export default async function EditStuffPage({ params }: { params: { id: string | string[] } }) {
+export default async function EditGamePage({ params }: { params: { id: string | string[] } }) {
   // Protect the page, only logged in users can access it.
   const session = await getServerSession(authOptions);
   loggedInProtectedPage(
@@ -20,7 +20,7 @@ export default async function EditStuffPage({ params }: { params: { id: string |
   const game: Game | null = await prisma.game.findUnique({
     where: { id },
   });
-  // console.log(stuff);
+
   if (!game) {
     return notFound();
   }

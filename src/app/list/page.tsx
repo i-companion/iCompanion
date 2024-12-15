@@ -3,9 +3,9 @@ import { Col, Container, Row, Table } from 'react-bootstrap';
 import { prisma } from '@/lib/prisma';
 import GameItem from '@/components/GameItem';
 import { loggedInProtectedPage } from '@/lib/page-protection';
-import { authOptions } from '@/app/api/auth/[...nextauth]/route';
+import authOptions from '@/lib/authOptions';
 
-/** Render a list of stuff for the logged in user. */
+/** Render a list of games for the logged in user. */
 const ListGames = async () => {
   // Protect the page, only logged in users can access it.
   const session = await getServerSession(authOptions);
@@ -19,7 +19,7 @@ const ListGames = async () => {
   const game = await prisma.game.findMany({
     where: { },
   });
-  // console.log(stuff);
+
   return (
     <main>
       <Container id="list" fluid className="py-3">
@@ -35,8 +35,8 @@ const ListGames = async () => {
                 </tr>
               </thead>
               <tbody>
-                {game.map((item) => (
-                  <GameItem key={item.id} {...item} />
+                {game.map((game) => (
+                  <GameItem key={game.id} {...game} />
                 ))}
               </tbody>
             </Table>

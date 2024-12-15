@@ -25,7 +25,6 @@ const EditGameForm = ({ game }: { game: Game }) => {
   } = useForm<Game>({
     resolver: yupResolver(EditGameSchema),
   });
-  // console.log(stuff);
 
   return (
     <Container className="py-3">
