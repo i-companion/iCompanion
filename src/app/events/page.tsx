@@ -1,7 +1,7 @@
 import { getServerSession } from 'next-auth';
 import authOptions from '@/lib/authOptions';
 import { loggedInProtectedPage } from '@/lib/page-protection';
-import { Container, Row, Col, Card } from 'react-bootstrap';
+import { Container, Row, Col } from 'react-bootstrap';
 
 const Events = async () => {
   // Protect the page, only logged in users can access it.
@@ -11,10 +11,10 @@ const Events = async () => {
       user: { email: string; id: string; randomKey: string };
     } | null,
   );
-
+  
   return (
     <main>
-      <Container id="list" fluid className="py-3 mx-4 mt-4 mb-5" style={{ backgroundColor: "#c3e0cb" }}>
+      <Container className="py-3 mt-4 mb-5 pb-5 justify-content-center" style={{ backgroundColor: "#c3e0cb"}}>
         <Row>
           <Col className="text-center">
             <h1>Upcoming Events at iLab</h1>
@@ -24,7 +24,7 @@ const Events = async () => {
         </Row>
 
         <Row className="justify-content-center">
-          <div className="card" style={{ width: "20rem" }}>
+          <div className="card ms-5 mb-3" style={{ width: "20rem" }}>
             <div className="card-header mt-3">
               <h5 className="card-title">Finals Week at iLab</h5>
               <div className="card-subtitle">2024</div>
@@ -37,7 +37,7 @@ const Events = async () => {
             </div>
           </div>
 
-          <div className="card ms-5" style={{ width: "20rem" }}>
+          <div className="card ms-5 pb-4 mb-3" style={{ width: "20rem" }}>
             <div className="card-header mt-3">
               <h5 className="card-title">UH Manoa Starts Offering eSports Internship</h5>
               <div className="card-subtitle">2021</div>
@@ -50,7 +50,7 @@ const Events = async () => {
             </div>
           </div>
 
-          <div className="card ms-5" style={{ width: "20rem" }}>
+          <div className="card ms-5 mb-3" style={{ width: "20rem" }}>
             <div className="card-header mt-3">
               <h5 className="card-title">iLab Opens!</h5>
               <div className="card-subtitle">October 3, 2022</div>
@@ -64,7 +64,6 @@ const Events = async () => {
             </div>
           </div>
         </Row>
-
 
       </Container>
     </main>
