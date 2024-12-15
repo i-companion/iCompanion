@@ -17,6 +17,10 @@ type SignUpForm = {
     valorant?: boolean;
     leagueOfLegends?: boolean;
     callOfDuty?: boolean;
+    overwatch?: boolean;
+    genshinImpact?: boolean;
+    superSmashBros?: boolean;
+    apexLegends?: boolean;
   };
 };
 
@@ -37,6 +41,10 @@ const SignUp = () => {
       valorant: Yup.boolean(),
       leagueOfLegends: Yup.boolean(),
       callOfDuty: Yup.boolean(),
+      overwatch: Yup.boolean(),
+      genshinImpact: Yup.boolean(),
+      superSmashBros: Yup.boolean(),
+      apexLegends: Yup.boolean(),
     }),
   });
 
@@ -54,6 +62,10 @@ const SignUp = () => {
     if (data.interests.valorant) gameIds.push('1');
     if (data.interests.leagueOfLegends) gameIds.push('2');
     if (data.interests.callOfDuty) gameIds.push('3');
+    if (data.interests.overwatch) gameIds.push('4');
+    if (data.interests.genshinImpact) gameIds.push('5');
+    if (data.interests.superSmashBros) gameIds.push('6');
+    if (data.interests.apexLegends) gameIds.push('7');
 
     const res = await fetch('/api/auth/signup', {
       method: 'POST',
@@ -176,6 +188,39 @@ const SignUp = () => {
                         className="form-check-input"
                       />
                       <label className="form-check-label">Call of Duty</label>
+                    </div>
+                    {/* New games */}
+                    <div className="form-check">
+                      <input
+                        type="checkbox"
+                        {...register('interests.overwatch')}
+                        className="form-check-input"
+                      />
+                      <label className="form-check-label">Overwatch</label>
+                    </div>
+                    <div className="form-check">
+                      <input
+                        type="checkbox"
+                        {...register('interests.genshinImpact')}
+                        className="form-check-input"
+                      />
+                      <label className="form-check-label">Genshin Impact</label>
+                    </div>
+                    <div className="form-check">
+                      <input
+                        type="checkbox"
+                        {...register('interests.superSmashBros')}
+                        className="form-check-input"
+                      />
+                      <label className="form-check-label">Super Smash Bros</label>
+                    </div>
+                    <div className="form-check">
+                      <input
+                        type="checkbox"
+                        {...register('interests.apexLegends')}
+                        className="form-check-input"
+                      />
+                      <label className="form-check-label">Apex Legends</label>
                     </div>
                   </Form.Group>
 

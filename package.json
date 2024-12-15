@@ -27,7 +27,7 @@
     "react-bootstrap": "^2.10.4",
     "react-bootstrap-icons": "^1.11.4",
     "react-dom": "^18",
-    "react-hook-form": "^7.52.0",
+    "react-hook-form": "^7.54.1",
     "sweetalert": "^2.1.2",
     "ts-node": "10.9.2",
     "yup": "^1.4.0"
