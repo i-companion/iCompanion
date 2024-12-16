@@ -80,6 +80,7 @@ h1 {
   background-color: #f5f1d7;
 }
 
-.custom-text {
-  font-size: 20px;
+.custom-size {
+  min-height: 800px;
+  width: 1200px;
 }
