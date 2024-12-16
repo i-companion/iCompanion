@@ -87,14 +87,35 @@ const SignUp = () => {
     }
   };
 
+  const containerStyle: React.CSSProperties = {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    minHeight: '100vh',
+    padding: '6rem',
+    flexDirection: 'column' as 'column',
+  };
+
+  const cardStyle = {
+    padding: '1rem 1.2rem',
+    borderRadius: '8px',
+    background: 'rgba(0, 0, 0, 0)',
+    border: '1px solid rgba(0, 0, 0, 0)',
+    transition: 'background 200ms, border 200ms',
+  };
+
+  const cardBodyStyle = {
+    backgroundColor: '#f5f1d7',
+  };
+
   return (
-    <main>
+    <main style={containerStyle}>
       <Container>
         <Row className="justify-content-center">
           <Col xs={5}>
             <h1 className="text-center">Sign Up</h1>
-            <Card>
-              <Card.Body>
+            <Card style={cardStyle}>
+              <Card.Body style={cardBodyStyle}>
                 <Form onSubmit={handleSubmit(onSubmit)}>
                   {/* Email */}
                   <Form.Group className="form-group">
