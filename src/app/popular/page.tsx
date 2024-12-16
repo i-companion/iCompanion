@@ -3,6 +3,8 @@ import authOptions from '@/lib/authOptions';
 import { loggedInProtectedPage } from '@/lib/page-protection';
 import { Container, Row, Col } from 'react-bootstrap';
 
+import PopularGames from '@/components/PopularCard';
+
 const Popular = async () => {
   // Protect the page, only logged in users can access it.
   const session = await getServerSession(authOptions);
@@ -16,7 +18,7 @@ const Popular = async () => {
       <Container id="list" fluid className="py-3">
         <Row>
           <Col>
-            <h1>Popular page is currently being cooked.</h1>
+            <PopularGames />
           </Col>
         </Row>
       </Container>
