@@ -14,7 +14,7 @@ const About = async () => {
   
   return (
     <main>
-      <Container className="py-3 mt-4 mb-5 pb-5 justify-content-center" style={{ backgroundColor: "#f5f1d7"}}>
+      <Container className="py-3 mt-4 mb-5 pb-5 justify-content-center border-stuff" style={{ backgroundColor: "#f5f1d7"}}>
        
         <Row>
           <Col className="text-center">

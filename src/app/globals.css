@@ -91,3 +91,11 @@ h1 {
   border-color: #6a8da0 !important;
   color: white !important;
 }
+
+.border-stuff {
+  border-radius: 45px !important;
+}
+
+.height-stuff {
+  min-height: 650px;
+}
