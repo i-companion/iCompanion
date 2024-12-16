@@ -11,6 +11,7 @@ const Connections = async () => {
       user: { email: string; id: string; randomKey: string };
     } | null,
   );
+
   return (
     <main>
       <Container>
@@ -19,7 +20,12 @@ const Connections = async () => {
             <img
               src="/i-companion-connections.png"
               alt="Connections illustration"
-              style={{ maxWidth: '100%', height: 'auto', display: 'block', margin: '0 auto' }}
+              style={{
+                maxWidth: '100%',
+                height: 'auto',
+                display: 'block',
+                margin: '0 auto',
+              }}
             />
           </Col>
         </Row>
