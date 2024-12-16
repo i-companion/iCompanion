@@ -87,35 +87,14 @@ const SignUp = () => {
     }
   };
 
-  const containerStyle: React.CSSProperties = {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    minHeight: '100vh',
-    padding: '6rem',
-    flexDirection: 'column' as 'column',
-  };
-
-  const cardStyle = {
-    padding: '1rem 1.2rem',
-    borderRadius: '8px',
-    background: 'rgba(0, 0, 0, 0)',
-    border: '1px solid rgba(0, 0, 0, 0)',
-    transition: 'background 200ms, border 200ms',
-  };
-
-  const cardBodyStyle = {
-    backgroundColor: '#f5f1d7',
-  };
-
   return (
-    <main style={containerStyle}>
+    <main>
       <Container>
         <Row className="justify-content-center">
           <Col xs={5}>
             <h1 className="text-center">Sign Up</h1>
-            <Card style={cardStyle}>
-              <Card.Body style={cardBodyStyle}>
+            <Card className='card-scrollable'>
+              <Card.Body className='card-custom'>
                 <Form onSubmit={handleSubmit(onSubmit)}>
                   {/* Email */}
                   <Form.Group className="form-group">
@@ -185,7 +164,7 @@ const SignUp = () => {
 
                   {/* Interests */}
                   <Form.Group className="form-group">
-                    <Form.Label>Interests</Form.Label>
+                    <Form.Label>Game Interests</Form.Label>
                     <div className="form-check">
                       <input
                         type="checkbox"
@@ -261,11 +240,12 @@ const SignUp = () => {
                     </Row>
                   </Form.Group>
                 </Form>
+                {/* Moved the footer content here */}
+                <div className="mt-4 text-center custom-text">
+                  Already have an account? 
+                  <a href="/auth/signin"> Sign in</a>
+                </div>
               </Card.Body>
-              <Card.Footer>
-                Already have an account?
-                <a href="/auth/signin">Sign in</a>
-              </Card.Footer>
             </Card>
           </Col>
         </Row>

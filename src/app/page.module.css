@@ -46,13 +46,6 @@
   width: var(--max-width);
 }
 
-.card {
-  padding: 1rem 1.2rem;
-  border-radius: var(--border-radius);
-  background: rgba(var(--card-rgb), 0);
-  border: 1px solid rgba(var(--card-border-rgb), 0);
-  transition: background 200ms, border 200ms;
-}
 
 .signup-card .card-body {
   background-color: #f5f1d7 !important;

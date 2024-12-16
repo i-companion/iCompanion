@@ -31,7 +31,7 @@ const SignIn = () => {
           <Col xs={5}>
             <h1 className="text-center">Sign In</h1>
             <Card>
-              <Card.Body>
+              <Card.Body className="d-flex flex-column">
                 <Form method="post" onSubmit={handleSubmit}>
                   <Form.Group controlId="formBasicEmail">
                     <Form.Label>Email</Form.Label>
@@ -45,11 +45,11 @@ const SignIn = () => {
                     Signin
                   </Button>
                 </Form>
+                <div className="mt-auto pt-3 text-center custom-text">
+                  Don&apos;t have an account?
+                  <a href="/auth/signup"> Sign up</a>
+                </div>
               </Card.Body>
-              <Card.Footer>
-                Don&apos;t have an account?
-                <a href="/auth/signup">Sign up</a>
-              </Card.Footer>
             </Card>
           </Col>
         </Row>
