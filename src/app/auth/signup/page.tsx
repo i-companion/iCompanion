@@ -189,7 +189,7 @@ const SignUp = () => {
                       />
                       <label className="form-check-label">Call of Duty</label>
                     </div>
-                    {/* New games */}
+                    {}
                     <div className="form-check">
                       <input
                         type="checkbox"
