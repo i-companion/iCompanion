@@ -1,6 +1,9 @@
 // src/pages/api/availableTimes.ts (or similar location)
 import { NextApiRequest, NextApiResponse } from "next";
 import { prisma } from "@/lib/prisma";
+import { getServerSession } from 'next-auth';
+import authOptions from '@/lib/authOptions';
+import { loggedInProtectedPage } from "@/lib/page-protection";
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method === "POST") {
@@ -17,11 +20,21 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       }
 
       // Create a new available time
+      const session = await getServerSession(authOptions);
+      loggedInProtectedPage(
+          session as {
+            user: { email: string; id: string; randomKey: string };
+          } | null,
+        );
+      const loggedInUserEmail = session?.user?.email;
       const newAvailableTime = await prisma.availableTime.create({
         data: {
           date: new Date(date),
           time: time,
-        },
+          user: {
+            connect: { email: loggedInUserEmail as string },
+          },
+        }
       });
 
       res.status(200).json(newAvailableTime);
