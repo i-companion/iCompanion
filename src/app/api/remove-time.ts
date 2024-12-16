@@ -1,9 +1,8 @@
 import { prisma } from '@/lib/prisma';
-import { NextApiRequest, NextApiResponse } from 'next';
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+export default async function handler(req, res) {
   if (req.method === 'POST') {
-    const { date, time, email } = req.body;
+    const { date, time, userId } = req.body;
 
     try {
       // Remove the selected time for the user
@@ -11,7 +10,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         where: {
           date: new Date(date),
           time,
-          email,
+          userId,
         },
       });
 
