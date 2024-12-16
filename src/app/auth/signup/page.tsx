@@ -5,7 +5,6 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
 import { Card, Col, Container, Button, Form, Row } from 'react-bootstrap';
-import { createUser } from '@/lib/dbActions';
 
 type SignUpForm = {
   email: string;
@@ -18,10 +17,13 @@ type SignUpForm = {
     valorant?: boolean;
     leagueOfLegends?: boolean;
     callOfDuty?: boolean;
+    overwatch?: boolean;
+    genshinImpact?: boolean;
+    superSmashBros?: boolean;
+    apexLegends?: boolean;
   };
 };
 
-/** The sign up page. */
 const SignUp = () => {
   const validationSchema = Yup.object().shape({
     email: Yup.string().required('Email is required').email('Email is invalid'),
@@ -39,6 +41,10 @@ const SignUp = () => {
       valorant: Yup.boolean(),
       leagueOfLegends: Yup.boolean(),
       callOfDuty: Yup.boolean(),
+      overwatch: Yup.boolean(),
+      genshinImpact: Yup.boolean(),
+      superSmashBros: Yup.boolean(),
+      apexLegends: Yup.boolean(),
     }),
   });
 
@@ -52,8 +58,33 @@ const SignUp = () => {
   });
 
   const onSubmit = async (data: SignUpForm) => {
-    await createUser(data);
-    await signIn('credentials', { callbackUrl: '/profile', ...data });
+    const gameIds = [];
+    if (data.interests.valorant) gameIds.push('1');
+    if (data.interests.leagueOfLegends) gameIds.push('2');
+    if (data.interests.callOfDuty) gameIds.push('3');
+    if (data.interests.overwatch) gameIds.push('4');
+    if (data.interests.genshinImpact) gameIds.push('5');
+    if (data.interests.superSmashBros) gameIds.push('6');
+    if (data.interests.apexLegends) gameIds.push('7');
+
+    const res = await fetch('/api/auth/signup', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        email: data.email,
+        password: data.password,
+        name: `${data.firstName} ${data.lastName}`,
+        discord: data.discord,
+        gameIds,
+      }),
+    });
+
+    const result = await res.json();
+    if (result.success) {
+      await signIn('credentials', { callbackUrl: '/profile', ...data });
+    } else {
+      alert('Error creating user: ' + result.error);
+    }
   };
 
   return (
@@ -62,8 +93,8 @@ const SignUp = () => {
         <Row className="justify-content-center">
           <Col xs={5}>
             <h1 className="text-center">Sign Up</h1>
-            <Card>
-              <Card.Body>
+            <Card className='card-scrollable'>
+              <Card.Body className='card-custom'>
                 <Form onSubmit={handleSubmit(onSubmit)}>
                   {/* Email */}
                   <Form.Group className="form-group">
@@ -133,7 +164,7 @@ const SignUp = () => {
 
                   {/* Interests */}
                   <Form.Group className="form-group">
-                    <Form.Label>Interests</Form.Label>
+                    <Form.Label>Game Interests</Form.Label>
                     <div className="form-check">
                       <input
                         type="checkbox"
@@ -158,6 +189,39 @@ const SignUp = () => {
                       />
                       <label className="form-check-label">Call of Duty</label>
                     </div>
+                    {/* New games */}
+                    <div className="form-check">
+                      <input
+                        type="checkbox"
+                        {...register('interests.overwatch')}
+                        className="form-check-input"
+                      />
+                      <label className="form-check-label">Overwatch</label>
+                    </div>
+                    <div className="form-check">
+                      <input
+                        type="checkbox"
+                        {...register('interests.genshinImpact')}
+                        className="form-check-input"
+                      />
+                      <label className="form-check-label">Genshin Impact</label>
+                    </div>
+                    <div className="form-check">
+                      <input
+                        type="checkbox"
+                        {...register('interests.superSmashBros')}
+                        className="form-check-input"
+                      />
+                      <label className="form-check-label">Super Smash Bros</label>
+                    </div>
+                    <div className="form-check">
+                      <input
+                        type="checkbox"
+                        {...register('interests.apexLegends')}
+                        className="form-check-input"
+                      />
+                      <label className="form-check-label">Apex Legends</label>
+                    </div>
                   </Form.Group>
 
                   {/* Buttons */}
@@ -176,11 +240,12 @@ const SignUp = () => {
                     </Row>
                   </Form.Group>
                 </Form>
+                {/* Moved the footer content here */}
+                <div className="mt-4 text-center custom-text">
+                  Already have an account? 
+                  <a href="/auth/signin"> Sign in</a>
+                </div>
               </Card.Body>
-              <Card.Footer>
-                Already have an account?
-                <a href="/auth/signin">Sign in</a>
-              </Card.Footer>
             </Card>
           </Col>
         </Row>
