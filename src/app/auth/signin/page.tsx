@@ -42,7 +42,7 @@ const SignIn = () => {
                     <input name="password" type="password" className="form-control" />
                   </Form.Group>
                   <Button type="submit" className="mt-3">
-                    Signin
+                    Sign in
                   </Button>
                 </Form>
                 <div className="mt-auto pt-3 text-center custom-text">
