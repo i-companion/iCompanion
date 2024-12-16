@@ -6,6 +6,7 @@
 }
 
 html,
+
 body {
   --bs-dark: var(--nat-navbar-bg);
   --bs-light-rgb: 236, 236, 236;
@@ -25,6 +26,7 @@ body {
   min-height: 100%;
   display: flex;
   flex-direction: column;
+  background-color: #f5f1d7 !important;
 }
 
 footer, footer a {
@@ -44,4 +46,40 @@ footer, footer a {
 
 h1 {
   font-family: 'Arial Rounded MT Bold', Arial, sans-serif;
+}
+
+.main-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 6rem;
+  flex-direction: column;
+  background-color: #f5f1d7 !important;
+}
+
+.card-custom {
+  background-color: #f5f1d7 !important;
+  border-radius: 45px;
+}
+
+.card-footer {
+  background-color: #f5f1d7 !important;
+}
+
+.card {
+  background-color: #f5f1d7 !important;
+  border-radius: 45px !important;
+  font-family: 'Arial Rounded MT Bold', Arial, sans-serif !important;
+}
+
+.card-scrollable {
+  max-height: 600px;
+  overflow: auto;
+  padding: 10px;
+  background-color: #f5f1d7;
+}
+
+.custom-text {
+  font-size: 20px;
 }
