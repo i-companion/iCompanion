@@ -45,4 +45,8 @@ model AvailableTime {
   id     Int      @id @default(autoincrement())
   date   DateTime
   time   String
+  userId Int      // Associate the available time with a user
+  user   User     @relation(fields: [userId], references: [id])
+
+  @@unique([date, time, userId]) // Ensure uniqueness of time slots for each user on a specific date
 }

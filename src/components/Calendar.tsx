@@ -6,19 +6,24 @@ import axios from "axios";
 
 function Calendar() {
   const [sDate, setsDate] = useState(new Date());
-  const [timeSlots, setTimeSlots] = useState<string[]>([
+
+  // General time slots that are always available
+  const globalTimeSlots = [
     "11:00 AM - 12:00 PM",
     "12:00 PM - 1:00 PM",
     "1:00 PM - 2:00 PM",
     "2:00 PM - 3:00 PM",
     "3:00 PM - 4:00 PM",
-  ]);
+  ];
 
+  // Map of selected times for each date
   const [dateTimesMap, setDateTimesMap] = useState<Record<string, string[]>>(
     {}
   );
 
-  const availableTimesForDate = dateTimesMap[sDate.toDateString()] || [];
+  const availableTimesForDate = globalTimeSlots.filter(
+    (slot) => !(dateTimesMap[sDate.toDateString()] || []).includes(slot)
+  );
 
   const handleDateClick = (date: Date) => {
     setsDate(date);
@@ -27,14 +32,11 @@ function Calendar() {
   const handleTimeSelect = async (time: string) => {
     const dateKey = sDate.toDateString();
 
-    // Update the available times for the current date
+    // Add selected time to the specific date
     setDateTimesMap((prevMap) => ({
       ...prevMap,
       [dateKey]: [...(prevMap[dateKey] || []), time].sort(),
     }));
-
-    // Remove the selected time from the general time slots
-    setTimeSlots((prevSlots) => prevSlots.filter((slot) => slot !== time));
 
     try {
       // Save the selected available time to the backend
@@ -56,16 +58,13 @@ function Calendar() {
   const handleRemoveTime = async (time: string) => {
     const dateKey = sDate.toDateString();
 
-    // Update the available times for the current date
+    // Remove selected time from the specific date
     setDateTimesMap((prevMap) => ({
       ...prevMap,
       [dateKey]: (prevMap[dateKey] || []).filter(
         (availableTime) => availableTime !== time
       ),
     }));
-
-    // Add the removed time back to the general time slots
-    setTimeSlots((prevSlots) => [...prevSlots, time].sort());
 
     try {
       // Inform the backend that the time is no longer available
@@ -92,7 +91,7 @@ function Calendar() {
 
     const allDays = [];
 
-    //empty cells
+    // Empty cells for padding
     for (let p = 0; p < fDay; p++) {
       allDays.push(<div key={`em-${p}`} className="box empty"></div>);
     }
@@ -140,9 +139,9 @@ function Calendar() {
         {sDate && (
           <div className="selected-date">
             <h4>Available Times for {sDate.toLocaleDateString()}</h4>
-            {availableTimesForDate.length > 0 ? (
+            {dateTimesMap[sDate.toDateString()]?.length > 0 ? (
               <ul>
-                {availableTimesForDate.map((time, index) => (
+                {dateTimesMap[sDate.toDateString()].map((time, index) => (
                   <li key={index}>
                     {time}{" "}
                     <button onClick={() => handleRemoveTime(time)}>x</button>
@@ -156,7 +155,7 @@ function Calendar() {
             <div>
               <h5>Select an available time slot:</h5>
               <ul>
-                {timeSlots.map((slot, index) => (
+                {availableTimesForDate.map((slot, index) => (
                   <li key={index}>
                     <button onClick={() => handleTimeSelect(slot)}>{slot}</button>
                   </li>
