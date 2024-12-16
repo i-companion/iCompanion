@@ -1,21 +1,23 @@
 :root {
-  --nat-navbar-bg: darkgreen;
-  --nat-navbar-bg-rgb: 0, 100, 0;
-  --nat-navbar-text-color: white;
+  --nat-navbar-bg: #f5f1d7;
+  --nat-navbar-bg-rgb: 245, 241, 215;
+  --nat-navbar-text-color: black;
+  --font-family: 'Arial Rounded MT Bold', Arial, sans-serif;
 }
 
 html,
 body {
   --bs-dark: var(--nat-navbar-bg);
   --bs-light-rgb: 236, 236, 236;
-  --bs-dark-rgb:var(--nat-navbar-bg-rgb);
+  --bs-dark-rgb: var(--nat-navbar-bg-rgb);
   box-sizing: border-box;
   height: 100%;
   padding: 0;
   margin: 0;
-  background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)),
-  url('/tempfrontpage.png'); /* Add the background image */
-  background-size: cover; /* Ensure the image covers the entire background */
+  background: url('/ilabgif.gif');
+  background-size: 100%;
+  background-repeat: no-repeat;
+  font-family: 'Arial Rounded MT Bold', Arial, sans-serif;
 }
 
 .wrapper {
@@ -26,5 +28,20 @@ body {
 }
 
 footer, footer a {
+  background-color: var(--nat-navbar-bg);
   color: var(--nat-navbar-text-color);
+  border-radius: 15px;
+  font-family: var(--font-family);
+}
+
+.navbar {
+  background-color: var(--nat-navbar-bg);
+  color: var(--nat-navbar-text-color);
+  border-radius: 15px;
+  padding: 10px 20px;
+  font-family: var(--font-family);
+}
+
+h1 {
+  font-family: 'Arial Rounded MT Bold', Arial, sans-serif;
 }
