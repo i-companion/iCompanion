@@ -84,3 +84,10 @@ h1 {
   min-height: 800px;
   width: 1200px;
 }
+
+.custom-button {
+  border-radius: 25px !important;
+  background-color: #6a8da0 !important;
+  border-color: #6a8da0 !important;
+  color: white !important;
+}
