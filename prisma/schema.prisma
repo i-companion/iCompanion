@@ -40,3 +40,9 @@ model Game {
   id        Int         @id @default(autoincrement())
   name      String      @unique
 }
+
+model AvailableTime {
+  id     Int      @id @default(autoincrement())
+  date   DateTime
+  time   String
+}
